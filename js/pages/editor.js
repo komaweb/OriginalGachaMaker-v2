@@ -427,21 +427,11 @@ ${gacha.name}
 
                     name.trim();
 
-                await import(
+await updateGacha(
 
-                    "../database/gachaRepository.js"
+    gacha
 
-                ).then(
-
-                    module=>
-
-                        module.updateGacha(
-
-                            gacha
-
-                        )
-
-                );
+);
 
                 await loadSeries();
 
