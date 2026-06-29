@@ -103,7 +103,7 @@ id="seriesList">
 </h2>
 
 <select
-id="characterSeries"
+id="rSeries"
 class="text-input">
 
 </select>
@@ -111,7 +111,7 @@ class="text-input">
 <br><br>
 
 <input
-id="characterName"
+id="rName"
 class="text-input"
 placeholder="キャラクター名">
 
@@ -456,6 +456,46 @@ async function saveCharacter(){
     const character =
 
         createCharacter();
+const iconFile =
+
+    document.getElementById(
+
+        "characterIcon"
+
+    ).files[0];
+
+const standFile =
+
+    document.getElementById(
+
+        "characterStand"
+
+    ).files[0];
+
+if(iconFile){
+
+    character.iconImage =
+
+        await fileToDataURL(
+
+            iconFile
+
+        );
+
+}
+
+if(standFile){
+
+    character.standImage =
+
+        await fileToDataURL(
+
+            standFile
+
+        );
+
+}
+    
 
     character.gachaId =
 
@@ -534,7 +574,29 @@ async function loadCharacterList(){
 
             );
 
-        card.innerHTML = `
+       card.innerHTML = `
+
+<div
+style="display:flex;align-items:center;gap:12px;">
+
+<img
+
+src="${
+    character.iconImage ??
+
+    "https://placehold.co/64x64?text=?"
+}"
+
+style="
+
+width:64px;
+height:64px;
+object-fit:cover;
+border-radius:12px;
+
+">
+
+<div>
 
 <b>
 
@@ -549,6 +611,10 @@ ${gacha?.name ?? "不明"}
 <br>
 
 ☆${character.rarity}
+
+</div>
+
+</div>
 
 `;
 
@@ -607,5 +673,41 @@ ${gacha?.name ?? "不明"}
         );
 
     });
+
+}
+
+function fileToDataURL(
+
+    file
+
+){
+
+    return new Promise(
+
+        resolve=>{
+
+            const reader =
+
+                new FileReader();
+
+            reader.onload = ()=>{
+
+                resolve(
+
+                    reader.result
+
+                );
+
+            };
+
+            reader.readAsDataURL(
+
+                file
+
+            );
+
+        }
+
+    );
 
 }
