@@ -15,9 +15,9 @@ export function createCharacter(){
 
         rarity:1,
 
-        image:null,
+        iconImage:null,
 
-        detailImage:null,
+        standImage:null,
 
         quote:"",
 
