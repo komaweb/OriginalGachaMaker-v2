@@ -19,7 +19,7 @@ export async function getGachas(){
 
             const request =
 
-                getDatabase()
+                getStore()
 
                 .transaction(
 
@@ -71,7 +71,7 @@ export async function addGacha(gacha){
 
             const request =
 
-                getDatabase()
+                getStore()
 
                 .transaction(
 
@@ -119,7 +119,7 @@ export async function updateGacha(gacha){
 
             const request =
 
-                getDatabase()
+                getStore()
 
                 .transaction(
 
@@ -167,7 +167,7 @@ export async function deleteGacha(id){
 
             const request =
 
-                getDatabase()
+                getStore()
 
                 .transaction(
 
