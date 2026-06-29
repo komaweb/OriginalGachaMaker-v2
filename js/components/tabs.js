@@ -122,7 +122,23 @@ export function initTabs(){
                 page.classList.add("active");
 
             }
+if(
 
+    button.dataset.page==="gacha"
+
+){
+
+    import(
+
+        "../pages/gacha.js"
+
+    ).then(
+
+        module=>module.loadGacha()
+
+    );
+
+}
         };
 
     });
