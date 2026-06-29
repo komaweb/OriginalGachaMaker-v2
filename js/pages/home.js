@@ -54,8 +54,7 @@ export function renderHome(){
 
 <h2>
 
-Original Gacha Maker
-
+Original Gacha Maker TEST
 </h2>
 
 <p>
