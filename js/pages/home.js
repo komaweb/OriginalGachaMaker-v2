@@ -86,11 +86,27 @@ export async function loadHome(){
 
     }
 
-    list.innerHTML="";
+    list.innerHTML = "";
 
     const gachas =
 
         await getGachas();
+
+    if(gachas.length===0){
+
+        list.innerHTML = `
+
+<p>
+
+まだガチャシリーズがありません。
+
+</p>
+
+`;
+
+        return;
+
+    }
 
     gachas.forEach(gacha=>{
 
@@ -100,13 +116,52 @@ export async function loadHome(){
 
                 "div",
 
-                "panel"
+                "home-gacha-card"
 
             );
 
-        card.textContent =
+        card.innerHTML = `
 
-            gacha.name;
+<div
+class="home-gacha-banner">
+
+${
+    gacha.banner
+    ? `
+<img
+src="${gacha.banner}">
+`
+    : `
+<div
+class="home-gacha-placeholder">
+
+No Image
+
+</div>
+`
+}
+
+</div>
+
+<div
+class="home-gacha-body">
+
+<h3>
+
+${gacha.name}
+
+</h3>
+
+<p>
+
+キャラクター
+0種類
+
+</p>
+
+</div>
+
+`;
 
         list.appendChild(
 
