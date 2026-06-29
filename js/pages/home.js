@@ -9,6 +9,12 @@ import {
 
 } from "../utils/dom.js";
 
+import {
+
+    getGachas
+
+} from "../database/gachaRepository.js";
+
 export function renderHome(){
 
     const page =
@@ -21,67 +27,93 @@ export function renderHome(){
 
         );
 
-    page.id = "home";
+    page.id =
 
-    const hero =
+        "home";
 
-        createElement(
+    page.innerHTML = `
 
-            "div",
+<div class="panel hero">
 
-            "panel hero"
+<h2>
 
-        );
+Original Gacha Maker
 
-    hero.innerHTML = `
+</h2>
 
-        <h2>
+<p>
 
-            Original Gacha Maker
+オリジナルキャラクターで遊べる
+ガチャメーカー
 
-        </h2>
+</p>
 
-        <p>
+</div>
 
-            オリジナルキャラクターで遊べる
-            ガチャメーカー
+<div class="panel">
 
-        </p>
+<h3>
 
-    `;
+開催中のガチャ
 
-    const panel =
+</h3>
 
-        createElement(
+<div id="homeGachaList">
 
-            "div",
+</div>
 
-            "panel"
+</div>
 
-        );
-
-    panel.innerHTML = `
-
-        <h3>
-
-            開催中のガチャ
-
-        </h3>
-
-        <div id="homeGachaList">
-
-        </div>
-
-    `;
-
-    page.append(
-
-        hero,
-
-        panel
-
-    );
+`;
 
     return page;
+
+}
+
+export async function loadHome(){
+
+    const list =
+
+        document.getElementById(
+
+            "homeGachaList"
+
+        );
+
+    if(!list){
+
+        return;
+
+    }
+
+    list.innerHTML="";
+
+    const gachas =
+
+        await getGachas();
+
+    gachas.forEach(gacha=>{
+
+        const card =
+
+            createElement(
+
+                "div",
+
+                "panel"
+
+            );
+
+        card.textContent =
+
+            gacha.name;
+
+        list.appendChild(
+
+            card
+
+        );
+
+    });
 
 }
