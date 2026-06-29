@@ -4,6 +4,8 @@ import {
     getGachas
 } from "./db.js";
 
+let selectedBanner = null;
+
 window.addEventListener(
 
     "DOMContentLoaded",
