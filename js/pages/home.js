@@ -19,11 +19,6 @@ import {
 
 } from "../utils/dom.js";
 
-import {
-
-    getGachas
-
-} from "../database/gachaRepository.js";
 
 export function renderHome(){
 
