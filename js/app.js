@@ -1,23 +1,69 @@
-import {
+const buttons =
 
-    initDatabase
+document.querySelectorAll(
 
-} from "./db.js";
-
-window.addEventListener(
-
-    "DOMContentLoaded",
-
-    async()=>{
-
-        await initDatabase();
-
-        console.log(
-
-            "Original Gacha Maker v2"
-
-        );
-
-    }
+".tab-button"
 
 );
+
+const pages =
+
+document.querySelectorAll(
+
+".page"
+
+);
+
+buttons.forEach(button=>{
+
+button.addEventListener(
+
+"click",
+
+()=>{
+
+buttons.forEach(
+
+b=>b.classList.remove(
+
+"active"
+
+)
+
+);
+
+pages.forEach(
+
+p=>p.classList.remove(
+
+"active"
+
+)
+
+);
+
+button.classList.add(
+
+"active"
+
+);
+
+document
+
+.getElementById(
+
+button.dataset.page
+
+)
+
+.classList.add(
+
+"active"
+
+);
+
+}
+
+);
+
+});
