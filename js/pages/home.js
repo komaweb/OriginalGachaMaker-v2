@@ -3,71 +3,37 @@
 // pages/home.js
 //======================================
 
+import {
+
+    createElement
+
+} from "../utils/dom.js";
+
 export function renderHome(){
 
-    return `
+    const page =
 
-<header class="header">
+        createElement(
 
-    <h1>
+            "section",
 
-        Original Gacha Maker
+            "page active"
 
-    </h1>
+        );
 
-</header>
+    page.id = "home";
 
-<nav class="tab-bar">
+    const hero =
 
-    <button
-        class="tab-button active"
-        data-page="home">
+        createElement(
 
-        ホーム
+            "div",
 
-    </button>
+            "panel hero"
 
-    <button
-        class="tab-button"
-        data-page="gacha">
+        );
 
-        ガチャ
-
-    </button>
-
-    <button
-        class="tab-button"
-        data-page="collection">
-
-        図鑑
-
-    </button>
-
-    <button
-        class="tab-button"
-        data-page="editor">
-
-        編集
-
-    </button>
-
-    <button
-        class="tab-button"
-        data-page="settings">
-
-        設定
-
-    </button>
-
-</nav>
-
-<main>
-
-<section
-    id="home"
-    class="page active">
-
-    <div class="panel hero">
+    hero.innerHTML = `
 
         <h2>
 
@@ -82,9 +48,19 @@ export function renderHome(){
 
         </p>
 
-    </div>
+    `;
 
-    <div class="panel">
+    const panel =
+
+        createElement(
+
+            "div",
+
+            "panel"
+
+        );
+
+    panel.innerHTML = `
 
         <h3>
 
@@ -92,40 +68,34 @@ export function renderHome(){
 
         </h3>
 
-        <div id="homeGachaList">
+    `;
 
-        </div>
+    const list =
 
-    </div>
+        createElement(
 
-</section>
+            "div"
 
-<section
-    id="gacha"
-    class="page">
+        );
 
-</section>
+    list.id =
 
-<section
-    id="collection"
-    class="page">
+        "homeGachaList";
 
-</section>
+    panel.appendChild(
 
-<section
-    id="editor"
-    class="page">
+        list
 
-</section>
+    );
 
-<section
-    id="settings"
-    class="page">
+    page.append(
 
-</section>
+        hero,
 
-</main>
+        panel
 
-`;
+    );
+
+    return page;
 
 }
