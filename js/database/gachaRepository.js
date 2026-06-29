@@ -18,25 +18,11 @@ export async function getGachas(){
         (resolve,reject)=>{
 
             const request =
-
-                getStore()
-
-                .transaction(
-
-                    STORES.gachas,
-
-                    "readonly"
-
-                )
-
-                .objectStore(
-
-                    STORES.gachas
-
-                )
-
-                .getAll();
-
+    getStore(
+        STORES.gachas,
+        "readonly"
+    ).getAll();
+            
             request.onsuccess = ()=>{
 
                 resolve(
