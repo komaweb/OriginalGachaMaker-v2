@@ -1,100 +1,97 @@
-const DB_NAME =
-    "OriginalGachaMaker";
-
+const DB_NAME = "OriginalGachaMaker";
 const DB_VERSION = 1;
 
 let db;
 
-export async function initDatabase(){
+export function initDatabase(){
 
-    return new Promise(
+    return new Promise((resolve,reject)=>{
 
-        (resolve,reject)=>{
+        const request = indexedDB.open(
+            DB_NAME,
+            DB_VERSION
+        );
 
-            const request =
+        request.onupgradeneeded = ()=>{
 
-                indexedDB.open(
+            db = request.result;
 
-                    DB_NAME,
+            if(!db.objectStoreNames.contains("gachas")){
 
-                    DB_VERSION
-
+                db.createObjectStore(
+                    "gachas",
+                    {
+                        keyPath:"id"
+                    }
                 );
 
-            request.onupgradeneeded = ()=>{
+            }
 
-                db = request.result;
+        };
 
-                if(
+        request.onsuccess = ()=>{
 
-                    !db.objectStoreNames.contains(
+            db = request.result;
 
-                        "gachas"
+            resolve();
 
-                    )
+        };
 
-                ){
+        request.onerror = ()=>{
 
-                    db.createObjectStore(
+            reject(request.error);
 
-                        "gachas",
+        };
 
-                        {
+    });
 
-                            keyPath:"id"
+}
 
-                        }
+export function addGacha(gacha){
 
-                    );
+    return new Promise((resolve,reject)=>{
 
-                }
+        const tx =
+            db.transaction(
+                "gachas",
+                "readwrite"
+            );
 
-                if(
+        const store =
+            tx.objectStore("gachas");
 
-                    !db.objectStoreNames.contains(
+        const request =
+            store.add(gacha);
 
-                        "characters"
+        request.onsuccess =
+            ()=>resolve();
 
-                    )
+        request.onerror =
+            ()=>reject(request.error);
 
-                ){
+    });
 
-                    db.createObjectStore(
+}
 
-                        "characters",
+export function getGachas(){
 
-                        {
+    return new Promise((resolve,reject)=>{
 
-                            keyPath:"id"
+        const tx =
+            db.transaction("gachas");
 
-                        }
+        const store =
+            tx.objectStore("gachas");
 
-                    );
+        const request =
+            store.getAll();
 
-                }
+        request.onsuccess =
+            ()=>resolve(request.result);
 
-            };
+        request.onerror =
+            ()=>reject(request.error);
 
-            request.onsuccess = ()=>{
-
-                db = request.result;
-
-                resolve();
-
-            };
-
-            request.onerror = ()=>{
-
-                reject(
-
-                    request.error
-
-                );
-
-            };
-
-        }
-
-    );
+    });
 
 }
