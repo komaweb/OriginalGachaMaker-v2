@@ -374,6 +374,8 @@ async function loadCharacterSeries(){
 
     if(!select){
 
+        alert("select が見つかりません");
+
         return;
 
     }
@@ -383,6 +385,14 @@ async function loadCharacterSeries(){
     const gachas =
 
         await getGachas();
+
+    alert(
+
+        "シリーズ数：" +
+
+        gachas.length
+
+    );
 
     gachas.forEach(gacha=>{
 
@@ -411,7 +421,6 @@ async function loadCharacterSeries(){
     });
 
 }
-
 
 async function saveCharacter(){
 
