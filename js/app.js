@@ -47,11 +47,6 @@ import {
 
 } from "./pages/editor.js";
 
-import {
-
-    renderGacha
-
-} from "./pages/gacha.js";
 
 import {
 
@@ -69,8 +64,6 @@ window.addEventListener(
 
     "DOMContentLoaded",
 
-    async()=>{
-        alert("app start");
 
         await initDatabase();
 
