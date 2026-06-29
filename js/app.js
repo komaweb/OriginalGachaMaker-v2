@@ -41,9 +41,9 @@ window.addEventListener(
 
             createLayout(
 
-                renderHome()
+    await renderHome()
 
-            )
+)
 
         );
 
