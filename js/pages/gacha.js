@@ -37,34 +37,31 @@ export function renderGacha(){
 
 <div class="panel">
 
-<h2>
+    <div
+    id="gachaInfo">
 
-ガチャ
+    </div>
 
-</h2>
+    <div
+    class="gacha-buttons">
 
-<div
-id="currentGachaInfo">
+        <button
+        id="singleGachaButton"
+        class="primary-button">
 
-</div>
+            1回引く
 
-<br>
+        </button>
 
-<button
-id="singleGachaButton"
-class="primary-button">
+        <button
+        id="tenGachaButton"
+        class="primary-button">
 
-1回引く
+            10連
 
-</button>
+        </button>
 
-<button
-id="tenGachaButton"
-class="primary-button">
-
-10連
-
-</button>
+    </div>
 
 </div>
 
@@ -80,7 +77,7 @@ export async function loadGacha(){
 
         document.getElementById(
 
-            "currentGachaInfo"
+            "gachaInfo"
 
         );
 
@@ -96,9 +93,21 @@ export async function loadGacha(){
 
     if(!currentId){
 
-        root.innerHTML =
+        root.innerHTML = `
 
-            "<p>ガチャシリーズを選択してください。</p>";
+<h2>
+
+ガチャ
+
+</h2>
+
+<p>
+
+ホームでガチャシリーズを選択してください。
+
+</p>
+
+`;
 
         return;
 
@@ -118,9 +127,21 @@ export async function loadGacha(){
 
     if(!gacha){
 
-        root.innerHTML =
+        root.innerHTML = `
 
-            "<p>ガチャシリーズが見つかりません。</p>";
+<h2>
+
+ガチャ
+
+</h2>
+
+<p>
+
+選択中のシリーズがありません。
+
+</p>
+
+`;
 
         return;
 
@@ -128,12 +149,72 @@ export async function loadGacha(){
 
     root.innerHTML = `
 
-<h3>
+<div class="gacha-header">
 
-${gacha.name}
+    <div class="gacha-banner">
 
-</h3>
+        ${
+            gacha.banner
+
+            ?
+
+            `<img src="${gacha.banner}">`
+
+            :
+
+            `<div class="home-gacha-placeholder">
+
+                No Image
+
+            </div>`
+
+        }
+
+    </div>
+
+    <h2>
+
+        ${gacha.name}
+
+    </h2>
+
+    <p>
+
+        キャラクター
+        0種類
+
+    </p>
+
+</div>
 
 `;
+
+    document.getElementById(
+
+        "singleGachaButton"
+
+    ).onclick = ()=>{
+
+        alert(
+
+            "1回引く（次回実装）"
+
+        );
+
+    };
+
+    document.getElementById(
+
+        "tenGachaButton"
+
+    ).onclick = ()=>{
+
+        alert(
+
+            "10連（次回実装）"
+
+        );
+
+    };
 
 }
