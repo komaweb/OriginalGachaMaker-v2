@@ -372,27 +372,25 @@ deleteButton.textContent =
 
     "削除";
 
-deleteButton.onclick =
+deleteButton.onclick = async()=>{
 
-    async()=>{
+    const characters =
 
-        const characters =
+        await getCharacters();
 
-    await getCharacters();
+    const count =
 
-const count =
+        characters.filter(
 
-    characters.filter(
+            character=>
 
-        character=>
+                character.gachaId===gacha.id
 
-            character.gachaId===gacha.id
+        ).length;
 
-    ).length;
+    const ok =
 
-if(
-
-    !confirm(
+        confirm(
 
 `「${gacha.name}」を削除しますか？
 
@@ -400,39 +398,36 @@ if(
 キャラクター ${count}体も
 一緒に削除されます。`
 
-    )
-
-){
-
-    return;
-
-}
-        
-
-            return;
-
-        }
-await deleteCharactersByGacha(
-
-    gacha.id
-
-);
-
-        await deleteGacha(
-
-            gacha.id
-
         );
 
-await loadSeries();
+    if(!ok){
 
-await loadCharacterSeries();
+        return;
 
-await loadCharacterList();
+    }
 
-await loadHome();
-    };
+    await deleteCharactersByGacha(
 
+        gacha.id
+
+    );
+
+    await deleteGacha(
+
+        gacha.id
+
+    );
+
+    await loadSeries();
+
+    await loadCharacterSeries();
+
+    await loadCharacterList();
+
+    await loadHome();
+
+};
+        
 card.appendChild(
 
     deleteButton
