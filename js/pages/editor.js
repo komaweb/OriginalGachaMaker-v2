@@ -2,6 +2,21 @@
 // Original Gacha Maker
 // pages/editor.js
 //======================================
+import {
+
+    createCharacter
+
+} from "../models/character.js";
+
+import {
+
+    getCharacters,
+
+    addCharacter,
+
+    deleteCharacter
+
+} from "../database/characterRepository.js";
 
 import {
 
@@ -223,9 +238,30 @@ function initEditor(){
 
         loadSeries();
 
+        loadCharacterSeries();
+
+        loadCharacterList();
+
+        const saveCharacterButton =
+
+            document.getElementById(
+
+                "saveCharacter"
+
+            );
+
+        if(saveCharacterButton){
+
+            saveCharacterButton.onclick =
+
+                saveCharacter;
+
+        }
+
     });
 
 }
+
 
 async function saveSeries(){
 
@@ -316,6 +352,57 @@ async function loadSeries(){
         list.appendChild(
 
             card
+
+        );
+
+    });
+
+}
+
+
+async function loadCharacterSeries(){
+
+    const select =
+
+        document.getElementById(
+
+            "characterSeries"
+
+        );
+
+    if(!select){
+
+        return;
+
+    }
+
+    select.innerHTML = "";
+
+    const gachas =
+
+        await getGachas();
+
+    gachas.forEach(gacha=>{
+
+        const option =
+
+            document.createElement(
+
+                "option"
+
+            );
+
+        option.value =
+
+            gacha.id;
+
+        option.textContent =
+
+            gacha.name;
+
+        select.appendChild(
+
+            option
 
         );
 
