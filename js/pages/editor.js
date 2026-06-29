@@ -34,7 +34,9 @@ import {
 
     addGacha,
 
-    getGachas
+    getGachas,
+
+    deleteGacha
 
 } from "../database/gachaRepository.js";
 
@@ -347,9 +349,64 @@ async function loadSeries(){
 
     );
 
-        card.textContent =
+card.innerHTML = `
 
-            gacha.name;
+<b>
+
+${gacha.name}
+
+</b>
+
+`;
+        const deleteButton =
+
+    document.createElement(
+
+        "button"
+
+    );
+
+deleteButton.textContent =
+
+    "削除";
+
+deleteButton.onclick =
+
+    async()=>{
+
+        if(
+
+            !confirm(
+
+                "シリーズを削除しますか？"
+
+            )
+
+        ){
+
+            return;
+
+        }
+
+        await deleteGacha(
+
+            gacha.id
+
+        );
+
+        await loadSeries();
+
+        await loadCharacterSeries();
+
+        await loadHome();
+
+    };
+
+card.appendChild(
+
+    deleteButton
+
+);
 
         list.appendChild(
 
