@@ -5,6 +5,12 @@
 
 import {
 
+    createElement
+
+} from "../utils/dom.js";
+
+import {
+
     createHeader
 
 } from "./header.js";
@@ -21,18 +27,50 @@ export function createLayout(
 
 ){
 
-    return `
+    const root =
 
-${createHeader()}
+        createElement(
 
-${createTabs()}
+            "div"
 
-<main>
+        );
 
-${page}
+    root.id =
 
-</main>
+        "layout";
 
-`;
+    root.appendChild(
+
+        createHeader()
+
+    );
+
+    root.appendChild(
+
+        createTabs()
+
+    );
+
+    const main =
+
+        createElement(
+
+            "main"
+
+        );
+
+    main.appendChild(
+
+        page
+
+    );
+
+    root.appendChild(
+
+        main
+
+    );
+
+    return root;
 
 }
