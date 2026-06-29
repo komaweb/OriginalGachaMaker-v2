@@ -182,3 +182,34 @@ export async function deleteGacha(id){
     );
 
 }
+
+
+const CURRENT_GACHA_KEY =
+
+    "ogm_current_gacha";
+
+export function getCurrentGacha(){
+
+    return localStorage.getItem(
+
+        CURRENT_GACHA_KEY
+
+    );
+
+}
+
+export function setCurrentGacha(
+
+    id
+
+){
+
+    localStorage.setItem(
+
+        CURRENT_GACHA_KEY,
+
+        id
+
+    );
+
+}
