@@ -67,3 +67,20 @@ button.dataset.page
 );
 
 });
+
+
+renderHome();
+
+function renderHome(){
+
+const list =
+
+document.getElementById(
+
+"homeGachaList"
+
+);
+
+list.innerHTML="";
+
+}
