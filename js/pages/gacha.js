@@ -1,3 +1,8 @@
+//======================================
+// Original Gacha Maker
+// pages/gacha.js
+//======================================
+
 import {
 
     createElement
@@ -20,19 +25,31 @@ export function renderGacha(){
 
         "gacha";
 
-    page.innerHTML = `
+    const panel =
 
-        <div class="panel">
+        createElement(
 
-            <h2>
+            "div",
 
-                ガチャ
+            "panel"
 
-            </h2>
+        );
 
-        </div>
+    panel.innerHTML = `
+
+        <h2>
+
+            ガチャ
+
+        </h2>
 
     `;
+
+    page.appendChild(
+
+        panel
+
+    );
 
     return page;
 
