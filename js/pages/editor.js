@@ -333,25 +333,41 @@ async function loadSeries(){
 
     }
 
-    list.innerHTML="";
+    list.innerHTML = "";
 
     const gachas =
 
         await getGachas();
 
+    const characters =
+
+        await getCharacters();
+
     gachas.forEach(gacha=>{
 
         const card =
 
-    createElement(
+            createElement(
 
-        "div",
+                "div",
 
-        "character-card"
+                "character-card"
 
-    );
+            );
 
-card.innerHTML = `
+        const count =
+
+            characters.filter(
+
+                character=>
+
+                    character.gachaId===gacha.id
+
+            ).length;
+
+        card.innerHTML = `
+
+<div style="flex:1;">
 
 <b>
 
@@ -359,38 +375,99 @@ ${gacha.name}
 
 </b>
 
+<br>
+
+キャラクター ${count}種類
+
+</div>
+
 `;
+
+        const renameButton =
+
+            document.createElement(
+
+                "button"
+
+            );
+
+        renameButton.textContent =
+
+            "名前変更";
+
+        renameButton.onclick =
+
+            async()=>{
+
+                const name =
+
+                    prompt(
+
+                        "新しいシリーズ名",
+
+                        gacha.name
+
+                    );
+
+                if(
+
+                    !name ||
+
+                    name.trim()===""
+
+                ){
+
+                    return;
+
+                }
+
+                gacha.name =
+
+                    name.trim();
+
+                await import(
+
+                    "../database/gachaRepository.js"
+
+                ).then(
+
+                    module=>
+
+                        module.updateGacha(
+
+                            gacha
+
+                        )
+
+                );
+
+                await loadSeries();
+
+                await loadCharacterSeries();
+
+                await loadHome();
+
+            };
+
         const deleteButton =
 
-    document.createElement(
+            document.createElement(
 
-        "button"
+                "button"
 
-    );
+            );
 
-deleteButton.textContent =
+        deleteButton.textContent =
 
-    "削除";
+            "削除";
 
-deleteButton.onclick = async()=>{
+        deleteButton.onclick =
 
-    const characters =
+            async()=>{
 
-        await getCharacters();
+                const ok =
 
-    const count =
-
-        characters.filter(
-
-            character=>
-
-                character.gachaId===gacha.id
-
-        ).length;
-
-    const ok =
-
-        confirm(
+                    confirm(
 
 `「${gacha.name}」を削除しますか？
 
@@ -398,41 +475,47 @@ deleteButton.onclick = async()=>{
 キャラクター ${count}体も
 一緒に削除されます。`
 
+                    );
+
+                if(!ok){
+
+                    return;
+
+                }
+
+                await deleteCharactersByGacha(
+
+                    gacha.id
+
+                );
+
+                await deleteGacha(
+
+                    gacha.id
+
+                );
+
+                await loadSeries();
+
+                await loadCharacterSeries();
+
+                await loadCharacterList();
+
+                await loadHome();
+
+            };
+
+        card.appendChild(
+
+            renameButton
+
         );
 
-    if(!ok){
+        card.appendChild(
 
-        return;
+            deleteButton
 
-    }
-
-    await deleteCharactersByGacha(
-
-        gacha.id
-
-    );
-
-    await deleteGacha(
-
-        gacha.id
-
-    );
-
-    await loadSeries();
-
-    await loadCharacterSeries();
-
-    await loadCharacterList();
-
-    await loadHome();
-
-};
-        
-card.appendChild(
-
-    deleteButton
-
-);
+        );
 
         list.appendChild(
 
