@@ -4,6 +4,12 @@
 //======================================
 import {
 
+    getCharacters
+
+} from "../database/characterRepository.js";
+
+import {
+
     openPage
 
 } from "../components/tabs.js";
