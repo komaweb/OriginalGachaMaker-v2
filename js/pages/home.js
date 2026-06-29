@@ -9,21 +9,19 @@ import {
 
 } from "../utils/dom.js";
 
-import {
-
-    getGachas
-
-} from "../database/gachaRepository.js";
-
-export async function renderHome(){
+export function renderHome(){
 
     const page =
 
         createElement(
 
-            "main"
+            "section",
+
+            "page active"
 
         );
+
+    page.id = "home";
 
     const hero =
 
@@ -52,12 +50,6 @@ export async function renderHome(){
 
     `;
 
-    page.appendChild(
-
-        hero
-
-    );
-
     const panel =
 
         createElement(
@@ -76,88 +68,20 @@ export async function renderHome(){
 
         </h3>
 
+        <div id="homeGachaList">
+
+        </div>
+
     `;
 
-    const list =
+    page.append(
 
-        createElement(
-
-            "div"
-
-        );
-
-    list.id =
-
-        "homeGachaList";
-
-    panel.appendChild(
-
-        list
-
-    );
-
-    page.appendChild(
+        hero,
 
         panel
 
     );
 
-    await renderHomeGachas();
-
     return page;
-
-}
-
-async function renderHomeGachas(){
-
-    const list =
-
-        document.getElementById(
-
-            "homeGachaList"
-
-        );
-
-    if(!list){
-
-        return;
-
-    }
-
-    list.innerHTML = "";
-
-    const gachas =
-
-        await getGachas();
-
-    gachas.forEach(gacha=>{
-
-        const card =
-
-            createElement(
-
-                "div",
-
-                "panel"
-
-            );
-
-        card.innerHTML = `
-
-            <strong>
-
-                ${gacha.name}
-
-            </strong>
-
-        `;
-
-        list.appendChild(
-
-            card
-
-        );
-
-    });
 
 }
