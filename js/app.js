@@ -11,9 +11,15 @@ import {
 
 import {
 
-    initTabs
+    createLayout
 
-} from "./components/tabs.js";
+} from "./components/layout.js";
+
+import {
+
+    renderHome
+
+} from "./pages/home.js";
 
 window.addEventListener(
 
@@ -21,29 +27,25 @@ window.addEventListener(
 
     async()=>{
 
-        try{
+        await initDatabase();
 
-            await initDatabase();
+        const app =
 
-            initTabs();
+            document.getElementById(
 
-            console.log(
-
-                "Original Gacha Maker v2"
+                "app"
 
             );
 
-        }catch(error){
+        app.replaceChildren(
 
-            console.error(error);
+            createLayout(
 
-            alert(
+                renderHome()
 
-                "初期化に失敗しました。"
+            )
 
-            );
-
-        }
+        );
 
     }
 
