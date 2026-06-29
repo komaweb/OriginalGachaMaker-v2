@@ -11,6 +11,10 @@ import {
 
 } from "./database.js";
 
+//==============================
+// 全取得
+//==============================
+
 export async function getCharacters(){
 
     return new Promise(
@@ -19,23 +23,13 @@ export async function getCharacters(){
 
             const request =
 
-                getStore()
-
-                .transaction(
+                getStore(
 
                     STORES.characters,
 
                     "readonly"
 
-                )
-
-                .objectStore(
-
-                    STORES.characters
-
-                )
-
-                .getAll();
+                ).getAll();
 
             request.onsuccess = ()=>{
 
@@ -63,6 +57,10 @@ export async function getCharacters(){
 
 }
 
+//==============================
+// 追加
+//==============================
+
 export async function addCharacter(character){
 
     return new Promise(
@@ -71,23 +69,13 @@ export async function addCharacter(character){
 
             const request =
 
-                getStore()
-
-                .transaction(
+                getStore(
 
                     STORES.characters,
 
                     "readwrite"
 
-                )
-
-                .objectStore(
-
-                    STORES.characters
-
-                )
-
-                .add(character);
+                ).add(character);
 
             request.onsuccess = ()=>{
 
@@ -110,6 +98,10 @@ export async function addCharacter(character){
     );
 
 }
+
+//==============================
+// 更新
+//==============================
 
 export async function updateCharacter(character){
 
@@ -119,23 +111,13 @@ export async function updateCharacter(character){
 
             const request =
 
-                getStore()
-
-                .transaction(
+                getStore(
 
                     STORES.characters,
 
                     "readwrite"
 
-                )
-
-                .objectStore(
-
-                    STORES.characters
-
-                )
-
-                .put(character);
+                ).put(character);
 
             request.onsuccess = ()=>{
 
@@ -159,6 +141,10 @@ export async function updateCharacter(character){
 
 }
 
+//==============================
+// 削除
+//==============================
+
 export async function deleteCharacter(id){
 
     return new Promise(
@@ -167,23 +153,13 @@ export async function deleteCharacter(id){
 
             const request =
 
-                getStore()
-
-                .transaction(
+                getStore(
 
                     STORES.characters,
 
                     "readwrite"
 
-                )
-
-                .objectStore(
-
-                    STORES.characters
-
-                )
-
-                .delete(id);
+                ).delete(id);
 
             request.onsuccess = ()=>{
 
