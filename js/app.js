@@ -4,6 +4,14 @@
 //======================================
 import {
 
+    renderGacha,
+
+    loadGacha
+
+} from "./pages/gacha.js";
+
+import {
+
     loadHome
 
 } from "./pages/home.js";
@@ -135,6 +143,7 @@ renderHome();
 
         initTabs();
 await loadHome();
+        await loadGacha();
     }
 
 );
