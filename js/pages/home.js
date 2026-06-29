@@ -193,6 +193,7 @@ ${gacha.name}
 card.onclick =
 
     async()=>{
+        alert(gacha.name);
 
         setCurrentGacha(
 
