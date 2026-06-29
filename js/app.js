@@ -73,14 +73,52 @@ renderHome();
 
 function renderHome(){
 
-const list =
+    const list =
 
-document.getElementById(
+        document.getElementById(
 
-"homeGachaList"
+            "homeGachaList"
 
-);
+        );
 
-list.innerHTML="";
+    list.innerHTML = "";
+
+    for(
+
+        let i=1;
+
+        i<=3;
+
+        i++
+
+    ){
+
+        const card =
+
+            document.createElement(
+
+                "div"
+
+            );
+
+        card.className =
+
+            "home-banner";
+
+        card.innerHTML =
+
+            `
+
+            ガチャシリーズ ${i}
+
+            `;
+
+        list.appendChild(
+
+            card
+
+        );
+
+    }
 
 }
