@@ -2,20 +2,6 @@
 // Original Gacha Maker
 // app.js
 //======================================
-import {
-
-    renderGacha,
-
-    loadGacha
-
-} from "./pages/gacha.js";
-
-import {
-
-    loadHome
-
-} from "./pages/home.js";
-
 
 import {
 
@@ -37,22 +23,31 @@ import {
 
 import {
 
-    renderHome
+    renderHome,
+
+    loadHome
 
 } from "./pages/home.js";
 
 import {
 
-    renderEditor
+    renderGacha,
 
-} from "./pages/editor.js";
+    loadGacha
 
+} from "./pages/gacha.js";
 
 import {
 
     renderCollection
 
 } from "./pages/collection.js";
+
+import {
+
+    renderEditor
+
+} from "./pages/editor.js";
 
 import {
 
@@ -64,6 +59,7 @@ window.addEventListener(
 
     "DOMContentLoaded",
 
+    async()=>{
 
         await initDatabase();
 
@@ -77,7 +73,7 @@ window.addEventListener(
 
         const home =
 
-renderHome();
+            renderHome();
 
         const gacha =
 
@@ -122,11 +118,12 @@ renderHome();
             settings
 
         );
+
         home.classList.add(
 
-    "active"
+            "active"
 
-);
+        );
 
         app.replaceChildren(
 
@@ -135,8 +132,11 @@ renderHome();
         );
 
         initTabs();
-await loadHome();
+
+        await loadHome();
+
         await loadGacha();
+
     }
 
 );
