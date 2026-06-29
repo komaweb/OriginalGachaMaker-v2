@@ -3,6 +3,58 @@
 // components/tabs.js
 //======================================
 
+export function createTabs(){
+
+    return `
+
+<nav class="tab-bar">
+
+    <button
+        class="tab-button active"
+        data-page="home">
+
+        ホーム
+
+    </button>
+
+    <button
+        class="tab-button"
+        data-page="gacha">
+
+        ガチャ
+
+    </button>
+
+    <button
+        class="tab-button"
+        data-page="collection">
+
+        図鑑
+
+    </button>
+
+    <button
+        class="tab-button"
+        data-page="editor">
+
+        編集
+
+    </button>
+
+    <button
+        class="tab-button"
+        data-page="settings">
+
+        設定
+
+    </button>
+
+</nav>
+
+`;
+
+}
+
 export function initTabs(){
 
     const buttons =
@@ -31,29 +83,21 @@ export function initTabs(){
 
                 buttons.forEach(
 
-                    button=>{
+                    b=>b.classList.remove(
 
-                        button.classList.remove(
+                        "active"
 
-                            "active"
-
-                        );
-
-                    }
+                    )
 
                 );
 
                 pages.forEach(
 
-                    page=>{
+                    p=>p.classList.remove(
 
-                        page.classList.remove(
+                        "active"
 
-                            "active"
-
-                        );
-
-                    }
+                    )
 
                 );
 
