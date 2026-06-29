@@ -33,6 +33,24 @@ import {
 
 } from "./pages/editor.js";
 
+import {
+
+    renderGacha
+
+} from "./pages/gacha.js";
+
+import {
+
+    renderCollection
+
+} from "./pages/collection.js";
+
+import {
+
+    renderSettings
+
+} from "./pages/settings.js";
+
 window.addEventListener(
 
     "DOMContentLoaded",
@@ -49,99 +67,51 @@ window.addEventListener(
 
             );
 
-        const pages = {
+        const home =
 
-            home:
+            await renderHome();
 
-                await renderHome(),
+        const gacha =
 
-            gacha:
+            renderGacha();
 
-                document.createElement(
+        const collection =
 
-                    "main"
+            renderCollection();
 
-                ),
+        const editor =
 
-            collection:
+            renderEditor();
 
-                document.createElement(
+        const settings =
 
-                    "main"
-
-                ),
-
-            editor:
-
-                renderEditor(),
-
-            settings:
-
-                document.createElement(
-
-                    "main"
-
-                )
-
-        };
-
-        pages.gacha.className =
-
-            "page";
-
-        pages.collection.className =
-
-            "page";
-
-        pages.settings.className =
-
-            "page";
-
-        pages.gacha.id =
-
-            "gacha";
-
-        pages.collection.id =
-
-            "collection";
-
-        pages.settings.id =
-
-            "settings";
-
-        pages.gacha.innerHTML =
-
-            `<div class="panel"><h2>ガチャ</h2></div>`;
-
-        pages.collection.innerHTML =
-
-            `<div class="panel"><h2>図鑑</h2></div>`;
-
-        pages.settings.innerHTML =
-
-            `<div class="panel"><h2>設定</h2></div>`;
+            renderSettings();
 
         const layout =
 
             createLayout(
 
-                pages.home
+                home
 
             );
 
-        layout.querySelector(
+        const pages =
 
-            "main"
+            layout.querySelector(
 
-        ).append(
+                "#pages"
 
-            pages.gacha,
+            );
 
-            pages.collection,
+        pages.append(
 
-            pages.editor,
+            gacha,
 
-            pages.settings
+            collection,
+
+            editor,
+
+            settings
 
         );
 
