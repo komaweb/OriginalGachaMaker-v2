@@ -9,6 +9,14 @@ import {
 
 } from "../utils/dom.js";
 
+import {
+
+    getCurrentGacha,
+
+    getGachas
+
+} from "../database/gachaRepository.js";
+
 export function renderGacha(){
 
     const page =
@@ -25,32 +33,107 @@ export function renderGacha(){
 
         "gacha";
 
-    const panel =
+    page.innerHTML = `
 
-        createElement(
+<div class="panel">
 
-            "div",
+<h2>
 
-            "panel"
+ガチャ
+
+</h2>
+
+<div
+id="currentGachaInfo">
+
+</div>
+
+<br>
+
+<button
+id="singleGachaButton"
+class="primary-button">
+
+1回引く
+
+</button>
+
+<button
+id="tenGachaButton"
+class="primary-button">
+
+10連
+
+</button>
+
+</div>
+
+`;
+
+    return page;
+
+}
+
+export async function loadGacha(){
+
+    const root =
+
+        document.getElementById(
+
+            "currentGachaInfo"
 
         );
 
-    panel.innerHTML = `
+    if(!root){
 
-        <h2>
+        return;
 
-            ガチャ
+    }
 
-        </h2>
+    const currentId =
 
-    `;
+        getCurrentGacha();
 
-    page.appendChild(
+    if(!currentId){
 
-        panel
+        root.innerHTML =
 
-    );
+            "<p>ガチャシリーズを選択してください。</p>";
 
-    return page;
+        return;
+
+    }
+
+    const gachas =
+
+        await getGachas();
+
+    const gacha =
+
+        gachas.find(
+
+            g=>g.id===currentId
+
+        );
+
+    if(!gacha){
+
+        root.innerHTML =
+
+            "<p>ガチャシリーズが見つかりません。</p>";
+
+        return;
+
+    }
+
+    root.innerHTML = `
+
+<h3>
+
+${gacha.name}
+
+</h3>
+
+`;
 
 }
