@@ -122,7 +122,7 @@ renderHome();
         );
 
         initTabs();
-
+await loadHome();
     }
 
 );
