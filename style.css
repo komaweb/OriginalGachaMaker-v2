@@ -1,0 +1,105 @@
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+body{
+
+    background:#eef3ff;
+
+    font-family:
+
+        system-ui,
+
+        sans-serif;
+
+}
+
+#app{
+
+    width:min(900px,100%);
+
+    margin:auto;
+
+    padding:24px;
+
+}
+
+.header{
+
+    margin-bottom:24px;
+
+}
+
+.header h1{
+
+    font-size:40px;
+
+}
+
+.tab-bar{
+
+    display:flex;
+
+    gap:12px;
+
+    overflow-x:auto;
+
+    margin-bottom:24px;
+
+}
+
+.tab-button{
+
+    flex:0 0 auto;
+
+    min-width:96px;
+
+    padding:14px 20px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:white;
+
+    cursor:pointer;
+
+}
+
+.tab-button.active{
+
+    background:#5b7cff;
+
+    color:white;
+
+}
+
+.panel{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:24px;
+
+    margin-bottom:24px;
+
+}
+
+.hero{
+
+    text-align:center;
+
+}
+
+.page{
+
+    display:block;
+
+}
