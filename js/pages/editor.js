@@ -38,6 +38,8 @@ import {
 
     getGachas,
 
+    updateGacha,
+
     deleteGacha
 
 } from "../database/gachaRepository.js";
