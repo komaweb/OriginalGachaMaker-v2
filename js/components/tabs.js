@@ -3,55 +3,87 @@
 // components/tabs.js
 //======================================
 
+import {
+
+    createElement
+
+} from "../utils/dom.js";
+
 export function createTabs(){
 
-    return `
+    const nav =
 
-<nav class="tab-bar">
+        createElement(
 
-    <button
-        class="tab-button active"
-        data-page="home">
+            "nav",
 
-        ホーム
+            "tab-bar"
 
-    </button>
+        );
 
-    <button
-        class="tab-button"
-        data-page="gacha">
+    const tabs = [
 
-        ガチャ
+        "home",
+        "gacha",
+        "collection",
+        "editor",
+        "settings"
 
-    </button>
+    ];
 
-    <button
-        class="tab-button"
-        data-page="collection">
+    const names = {
 
-        図鑑
+        home:"ホーム",
 
-    </button>
+        gacha:"ガチャ",
 
-    <button
-        class="tab-button"
-        data-page="editor">
+        collection:"図鑑",
 
-        編集
+        editor:"編集",
 
-    </button>
+        settings:"設定"
 
-    <button
-        class="tab-button"
-        data-page="settings">
+    };
 
-        設定
+    tabs.forEach((id,index)=>{
 
-    </button>
+        const button =
 
-</nav>
+            createElement(
 
-`;
+                "button",
+
+                "tab-button"
+
+            );
+
+        button.dataset.page =
+
+            id;
+
+        button.textContent =
+
+            names[id];
+
+        if(index===0){
+
+            button.classList.add(
+
+                "active"
+
+            );
+
+        }
+
+        nav.appendChild(
+
+            button
+
+        );
+
+    });
+
+    return nav;
 
 }
 
@@ -62,14 +94,6 @@ export function initTabs(){
         document.querySelectorAll(
 
             ".tab-button"
-
-        );
-
-    const pages =
-
-        document.querySelectorAll(
-
-            ".page"
 
         );
 
@@ -91,35 +115,11 @@ export function initTabs(){
 
                 );
 
-                pages.forEach(
-
-                    p=>p.classList.remove(
-
-                        "active"
-
-                    )
-
-                );
-
                 button.classList.add(
 
                     "active"
 
                 );
-
-                document
-
-                    .getElementById(
-
-                        button.dataset.page
-
-                    )
-
-                    .classList.add(
-
-                        "active"
-
-                    );
 
             }
 
