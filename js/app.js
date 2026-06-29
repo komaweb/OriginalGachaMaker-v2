@@ -69,7 +69,7 @@ window.addEventListener(
 
         const home =
 
-            await renderHome();
+renderHome();
 
         const gacha =
 
