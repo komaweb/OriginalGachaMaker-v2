@@ -119,6 +119,32 @@ export function getDatabase(){
 
 }
 
+export function getStore(
+
+    storeName,
+
+    mode="readonly"
+
+){
+
+    return database
+
+        .transaction(
+
+            storeName,
+
+            mode
+
+        )
+
+        .objectStore(
+
+            storeName
+
+        );
+
+}
+
 export {
 
     STORES
