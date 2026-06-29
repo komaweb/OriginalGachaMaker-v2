@@ -103,3 +103,68 @@ body{
     display:block;
 
 }
+
+
+.home-gacha-card{
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:white;
+
+    margin-bottom:20px;
+
+    box-shadow:
+
+        0 6px 20px
+
+        rgba(0,0,0,.08);
+
+}
+
+.home-gacha-banner{
+
+    height:160px;
+
+    background:#eef2ff;
+
+}
+
+.home-gacha-banner img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.home-gacha-placeholder{
+
+    width:100%;
+
+    height:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#888;
+
+}
+
+.home-gacha-body{
+
+    padding:20px;
+
+}
+
+.home-gacha-body h3{
+
+    margin-bottom:8px;
+
+}
