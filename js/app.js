@@ -121,6 +121,11 @@ renderHome();
             settings
 
         );
+        home.classList.add(
+
+    "active"
+
+);
 
         app.replaceChildren(
 
