@@ -79,8 +79,120 @@ id="seriesList">
 
 </div>
 
-`;
+<div class="panel">
 
+<h2>
+
+キャラクター登録
+
+</h2>
+
+<select
+id="characterSeries"
+class="text-input">
+
+</select>
+
+<br><br>
+
+<input
+id="characterName"
+class="text-input"
+placeholder="キャラクター名">
+
+<br><br>
+
+<label>
+
+アイコン画像
+
+</label>
+
+<input
+id="characterIcon"
+type="file"
+accept="image/*">
+
+<br><br>
+
+<label>
+
+立ち絵画像
+
+</label>
+
+<input
+id="characterStand"
+type="file"
+accept="image/*">
+
+<br><br>
+
+<select
+id="characterRarity"
+class="text-input">
+
+<option value="1">
+
+☆1
+
+</option>
+
+<option value="2">
+
+☆2
+
+</option>
+
+<option value="3">
+
+☆3
+
+</option>
+
+<option value="4">
+
+☆4
+
+</option>
+
+<option value="5">
+
+☆5
+
+</option>
+
+</select>
+
+<br><br>
+
+<button
+id="saveCharacter"
+class="primary-button">
+
+キャラクターを保存
+
+</button>
+
+</div>
+
+<div class="panel">
+
+<h2>
+
+登録済みキャラクター
+
+</h2>
+
+<div
+id="characterList">
+
+</div>
+
+</div>
+
+`;
+    
     initEditor();
 
     return page;
