@@ -182,3 +182,42 @@ export async function deleteCharacter(id){
     );
 
 }
+
+
+export async function deleteCharactersByGacha(
+
+    gachaId
+
+){
+
+    const characters =
+
+        await getCharacters();
+
+    const targets =
+
+        characters.filter(
+
+            character=>
+
+                character.gachaId===gachaId
+
+        );
+
+    for(
+
+        const character
+
+        of targets
+
+    ){
+
+        await deleteCharacter(
+
+            character.id
+
+        );
+
+    }
+
+}
