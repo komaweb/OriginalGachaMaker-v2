@@ -14,7 +14,9 @@ import {
 
     addCharacter,
 
-    deleteCharacter
+    deleteCharacter,
+
+    deleteCharactersByGacha
 
 } from "../database/characterRepository.js";
 
@@ -387,7 +389,11 @@ deleteButton.onclick =
             return;
 
         }
+await deleteCharactersByGacha(
 
+    gacha.id
+
+);
         await deleteGacha(
 
             gacha.id
