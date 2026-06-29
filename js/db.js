@@ -95,3 +95,58 @@ export function getGachas(){
     });
 
 }
+export function updateGacha(gacha){
+
+    return new Promise((resolve,reject)=>{
+
+        const tx =
+            db.transaction(
+                "gachas",
+                "readwrite"
+            );
+
+        const store =
+            tx.objectStore(
+                "gachas"
+            );
+
+        const request =
+            store.put(gacha);
+
+        request.onsuccess =
+            ()=>resolve();
+
+        request.onerror =
+            ()=>reject(request.error);
+
+    });
+
+}
+
+export function deleteGacha(id){
+
+    return new Promise((resolve,reject)=>{
+
+        const tx =
+            db.transaction(
+                "gachas",
+                "readwrite"
+            );
+
+        const store =
+            tx.objectStore(
+                "gachas"
+            );
+
+        const request =
+            store.delete(id);
+
+        request.onsuccess =
+            ()=>resolve();
+
+        request.onerror =
+            ()=>reject(request.error);
+
+    });
+
+}
