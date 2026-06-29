@@ -337,13 +337,13 @@ async function loadSeries(){
 
         const card =
 
-            createElement(
+    createElement(
 
-                "div",
+        "div",
 
-                "panel"
+        "character-card"
 
-            );
+    );
 
         card.textContent =
 
@@ -618,6 +618,40 @@ ${gacha?.name ?? "不明"}
 
 `;
 
+        const buttonArea =
+
+    document.createElement(
+
+        "div"
+
+    );
+
+buttonArea.className =
+
+    "character-buttons";
+
+const editButton =
+
+    document.createElement(
+
+        "button"
+
+    );
+
+editButton.textContent =
+
+    "編集";
+
+editButton.onclick = ()=>{
+
+    alert(
+
+        "編集機能は次回実装"
+
+    );
+
+};
+
         const deleteButton =
 
             document.createElement(
@@ -659,12 +693,23 @@ ${gacha?.name ?? "不明"}
                 await loadHome();
 
             };
+buttonArea.appendChild(
 
-        card.appendChild(
+    editButton
 
-            deleteButton
+);
 
-        );
+buttonArea.appendChild(
+
+    deleteButton
+
+);
+
+card.appendChild(
+
+    buttonArea
+
+);
 
         list.appendChild(
 
