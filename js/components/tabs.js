@@ -65,8 +65,29 @@ export function initTabs(){
                         "active"
 
                     );
-
                 }
+
+                document.dispatchEvent(
+
+                    new CustomEvent(
+
+                        "pagechange",
+
+                        {
+
+                            detail:{
+
+                                page:
+
+                                    button.dataset.page
+
+                            }
+
+                        }
+
+                    )
+
+                );
 
             }
 
