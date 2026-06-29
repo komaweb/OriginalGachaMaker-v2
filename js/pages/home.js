@@ -2,6 +2,16 @@
 // Original Gacha Maker
 // pages/home.js
 //======================================
+import {
+
+    getGachas,
+
+    getCurrentGacha,
+
+    setCurrentGacha
+
+} from "../database/gachaRepository.js";
+
 
 import {
 
@@ -91,6 +101,9 @@ export async function loadHome(){
     const gachas =
 
         await getGachas();
+    const currentGacha =
+
+    getCurrentGacha();
 
     if(gachas.length===0){
 
@@ -162,6 +175,34 @@ ${gacha.name}
 </div>
 
 `;
+
+        if(
+
+    gacha.id===currentGacha
+
+){
+
+    card.classList.add(
+
+        "selected"
+
+    );
+
+}
+
+card.onclick =
+
+    async()=>{
+
+        setCurrentGacha(
+
+            gacha.id
+
+        );
+
+        await loadHome();
+
+    };
 
         list.appendChild(
 
