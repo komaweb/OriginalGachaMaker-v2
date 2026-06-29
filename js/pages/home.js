@@ -15,13 +15,9 @@ export function renderHome(){
 
         createElement(
 
-            "section",
-
-            "page active"
+            "main"
 
         );
-
-    page.id = "home";
 
     const hero =
 
@@ -33,7 +29,9 @@ export function renderHome(){
 
         );
 
-    hero.innerHTML = `
+    hero.innerHTML =
+
+        `
 
         <h2>
 
@@ -48,7 +46,7 @@ export function renderHome(){
 
         </p>
 
-    `;
+        `;
 
     const panel =
 
@@ -60,7 +58,9 @@ export function renderHome(){
 
         );
 
-    panel.innerHTML = `
+    panel.innerHTML =
+
+        `
 
         <h3>
 
@@ -68,25 +68,11 @@ export function renderHome(){
 
         </h3>
 
-    `;
+        <div id="homeGachaList">
 
-    const list =
+        </div>
 
-        createElement(
-
-            "div"
-
-        );
-
-    list.id =
-
-        "homeGachaList";
-
-    panel.appendChild(
-
-        list
-
-    );
+        `;
 
     page.append(
 
