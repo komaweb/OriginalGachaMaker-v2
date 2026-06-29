@@ -1,124 +1,182 @@
-const buttons =
+import {
+    initDatabase,
+    addGacha,
+    getGachas
+} from "./db.js";
 
-document.querySelectorAll(
+window.addEventListener(
 
-".tab-button"
+    "DOMContentLoaded",
 
-);
+    async()=>{
 
-const pages =
+        await initDatabase();
 
-document.querySelectorAll(
+        initTabs();
 
-".page"
+        initEditor();
 
-);
+        renderHome();
 
-buttons.forEach(button=>{
+        renderSeriesList();
 
-button.addEventListener(
-
-"click",
-
-()=>{
-
-buttons.forEach(
-
-b=>b.classList.remove(
-
-"active"
-
-)
+    }
 
 );
 
-pages.forEach(
+//==============================
+// タブ
+//==============================
 
-p=>p.classList.remove(
+function initTabs(){
 
-"active"
+    const buttons =
+        document.querySelectorAll(".tab-button");
 
-)
+    const pages =
+        document.querySelectorAll(".page");
 
-);
+    buttons.forEach(button=>{
 
-button.classList.add(
+        button.addEventListener("click",()=>{
 
-"active"
+            buttons.forEach(
 
-);
-
-document
-
-.getElementById(
-
-button.dataset.page
-
-)
-
-.classList.add(
-
-"active"
-
-);
-
-}
-
-);
-
-});
-
-
-renderHome();
-
-function renderHome(){
-
-    const list =
-
-        document.getElementById(
-
-            "homeGachaList"
-
-        );
-
-    list.innerHTML = "";
-
-    for(
-
-        let i=1;
-
-        i<=3;
-
-        i++
-
-    ){
-
-        const card =
-
-            document.createElement(
-
-                "div"
+                b=>b.classList.remove("active")
 
             );
 
-        card.className =
+            pages.forEach(
 
-            "home-banner";
+                p=>p.classList.remove("active")
 
-        card.innerHTML =
+            );
 
-            `
+            button.classList.add("active");
 
-            ガチャシリーズ ${i}
+            document
 
-            `;
+                .getElementById(
 
-        list.appendChild(
+                    button.dataset.page
 
-            card
+                )
 
-        );
+                .classList.add("active");
 
-    }
+        });
+
+    });
+
+}
+
+//==============================
+// 編集画面
+//==============================
+
+function initEditor(){
+
+    const saveButton =
+        document.getElementById("saveSeries");
+
+    const nameInput =
+        document.getElementById("seriesName");
+
+    saveButton.addEventListener(
+
+        "click",
+
+        async()=>{
+
+            const name =
+                nameInput.value.trim();
+
+            if(name===""){
+
+                alert("シリーズ名を入力してください");
+
+                return;
+
+            }
+
+            await addGacha({
+
+                id:crypto.randomUUID(),
+
+                name,
+
+                banner:null
+
+            });
+
+            nameInput.value="";
+
+            renderSeriesList();
+
+            renderHome();
+
+        }
+
+    );
+
+}
+
+//==============================
+// ホーム
+//==============================
+
+async function renderHome(){
+
+    const list =
+        document.getElementById("homeGachaList");
+
+    list.innerHTML="";
+
+    const gachas =
+        await getGachas();
+
+    gachas.forEach(gacha=>{
+
+        const card =
+            document.createElement("div");
+
+        card.className="home-banner";
+
+        card.textContent =
+            gacha.name;
+
+        list.appendChild(card);
+
+    });
+
+}
+
+//==============================
+// 編集一覧
+//==============================
+
+async function renderSeriesList(){
+
+    const list =
+        document.getElementById("seriesList");
+
+    list.innerHTML="";
+
+    const gachas =
+        await getGachas();
+
+    gachas.forEach(gacha=>{
+
+        const card =
+            document.createElement("div");
+
+        card.className="series-card";
+
+        card.textContent=
+            gacha.name;
+
+        list.appendChild(card);
+
+    });
 
 }
