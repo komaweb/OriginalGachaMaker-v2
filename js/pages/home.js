@@ -185,20 +185,17 @@ ${gacha.name}
 
 }
 
-card.onclick =
+card.onclick = async()=>{
 
-    async()=>{
-        alert(gacha.name);
+    setCurrentGacha(
 
-        setCurrentGacha(
+        gacha.id
 
-            gacha.id
+    );
 
-        );
+    await loadHome();
 
-        await loadHome();
-
-    };
+};
 
         list.appendChild(
 
