@@ -11,10 +11,6 @@ import {
 
 } from "./database.js";
 
-//==============================
-// 全取得
-//==============================
-
 export async function getCharacters(){
 
     return new Promise(
@@ -23,13 +19,23 @@ export async function getCharacters(){
 
             const request =
 
-                getStore(
+                getStore()
+
+                .transaction(
 
                     STORES.characters,
 
                     "readonly"
 
-                ).getAll();
+                )
+
+                .objectStore(
+
+                    STORES.characters
+
+                )
+
+                .getAll();
 
             request.onsuccess = ()=>{
 
@@ -57,39 +63,7 @@ export async function getCharacters(){
 
 }
 
-//==============================
-// ガチャごとの取得
-//==============================
-
-export async function getCharactersByGacha(
-
-    gachaId
-
-){
-
-    const characters =
-
-        await getCharacters();
-
-    return characters.filter(
-
-        character=>
-
-            character.gachaId===gachaId
-
-    );
-
-}
-
-//==============================
-// 追加
-//==============================
-
-export async function addCharacter(
-
-    character
-
-){
+export async function addCharacter(character){
 
     return new Promise(
 
@@ -97,13 +71,23 @@ export async function addCharacter(
 
             const request =
 
-                getStore(
+                getStore()
+
+                .transaction(
 
                     STORES.characters,
 
                     "readwrite"
 
-                ).add(character);
+                )
+
+                .objectStore(
+
+                    STORES.characters
+
+                )
+
+                .add(character);
 
             request.onsuccess = ()=>{
 
@@ -127,15 +111,7 @@ export async function addCharacter(
 
 }
 
-//==============================
-// 更新
-//==============================
-
-export async function updateCharacter(
-
-    character
-
-){
+export async function updateCharacter(character){
 
     return new Promise(
 
@@ -143,13 +119,23 @@ export async function updateCharacter(
 
             const request =
 
-                getStore(
+                getStore()
+
+                .transaction(
 
                     STORES.characters,
 
                     "readwrite"
 
-                ).put(character);
+                )
+
+                .objectStore(
+
+                    STORES.characters
+
+                )
+
+                .put(character);
 
             request.onsuccess = ()=>{
 
@@ -173,15 +159,7 @@ export async function updateCharacter(
 
 }
 
-//==============================
-// 削除
-//==============================
-
-export async function deleteCharacter(
-
-    id
-
-){
+export async function deleteCharacter(id){
 
     return new Promise(
 
@@ -189,13 +167,23 @@ export async function deleteCharacter(
 
             const request =
 
-                getStore(
+                getStore()
+
+                .transaction(
 
                     STORES.characters,
 
                     "readwrite"
 
-                ).delete(id);
+                )
+
+                .objectStore(
+
+                    STORES.characters
+
+                )
+
+                .delete(id);
 
             request.onsuccess = ()=>{
 
