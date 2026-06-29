@@ -168,3 +168,16 @@ body{
     margin-bottom:8px;
 
 }
+
+
+.page{
+
+    display:none;
+
+}
+
+.page.active{
+
+    display:block;
+
+}
