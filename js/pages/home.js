@@ -4,6 +4,12 @@
 //======================================
 import {
 
+    openPage
+
+} from "../components/tabs.js";
+
+import {
+
     getGachas,
 
     getCurrentGacha,
@@ -195,11 +201,11 @@ card.onclick = async()=>{
 
     await loadHome();
 
-    document.querySelector(
+    await openPage(
 
-        '.tab-button[data-page="gacha"]'
+    "gacha"
 
-    ).click();
+);
 
 };
 
