@@ -9,7 +9,13 @@ import {
 
 } from "../utils/dom.js";
 
-export function renderHome(){
+import {
+
+    getGachas
+
+} from "../database/gachaRepository.js";
+
+export async function renderHome(){
 
     const page =
 
@@ -29,9 +35,7 @@ export function renderHome(){
 
         );
 
-    hero.innerHTML =
-
-        `
+    hero.innerHTML = `
 
         <h2>
 
@@ -46,7 +50,13 @@ export function renderHome(){
 
         </p>
 
-        `;
+    `;
+
+    page.appendChild(
+
+        hero
+
+    );
 
     const panel =
 
@@ -58,9 +68,7 @@ export function renderHome(){
 
         );
 
-    panel.innerHTML =
-
-        `
+    panel.innerHTML = `
 
         <h3>
 
@@ -68,20 +76,88 @@ export function renderHome(){
 
         </h3>
 
-        <div id="homeGachaList">
+    `;
 
-        </div>
+    const list =
 
-        `;
+        createElement(
 
-    page.append(
+            "div"
 
-        hero,
+        );
+
+    list.id =
+
+        "homeGachaList";
+
+    panel.appendChild(
+
+        list
+
+    );
+
+    page.appendChild(
 
         panel
 
     );
 
+    await renderHomeGachas();
+
     return page;
+
+}
+
+async function renderHomeGachas(){
+
+    const list =
+
+        document.getElementById(
+
+            "homeGachaList"
+
+        );
+
+    if(!list){
+
+        return;
+
+    }
+
+    list.innerHTML = "";
+
+    const gachas =
+
+        await getGachas();
+
+    gachas.forEach(gacha=>{
+
+        const card =
+
+            createElement(
+
+                "div",
+
+                "panel"
+
+            );
+
+        card.innerHTML = `
+
+            <strong>
+
+                ${gacha.name}
+
+            </strong>
+
+        `;
+
+        list.appendChild(
+
+            card
+
+        );
+
+    });
 
 }
