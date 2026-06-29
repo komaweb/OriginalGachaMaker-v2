@@ -195,13 +195,19 @@ card.onclick = async()=>{
 
     await loadHome();
 
+    document.querySelector(
+
+        '.tab-button[data-page="gacha"]'
+
+    ).click();
+
 };
 
-        list.appendChild(
+list.appendChild(
 
-            card
+    card
 
-        );
+);
 
     });
 
