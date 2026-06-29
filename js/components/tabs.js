@@ -85,7 +85,11 @@ export function createTabs(){
 
 }
 
-export function initTabs(){
+export async function openPage(
+
+    pageId
+
+){
 
     const buttons =
 
@@ -103,76 +107,82 @@ export function initTabs(){
 
         );
 
-    buttons.forEach(button=>{
+    buttons.forEach(
 
-        button.onclick = async()=>{
+        button=>{
 
-            buttons.forEach(
+            button.classList.toggle(
 
-                b=>b.classList.remove(
+                "active",
 
-                    "active"
-
-                )
+                button.dataset.page===pageId
 
             );
 
-            pages.forEach(
+        }
 
-                p=>p.classList.remove(
+    );
 
-                    "active"
+    pages.forEach(
 
-                )
+        page=>{
+
+            page.classList.toggle(
+
+                "active",
+
+                page.id===pageId
 
             );
 
-            button.classList.add(
+        }
 
-                "active"
+    );
 
-            );
+    switch(pageId){
 
-            const page =
+        case "home":
 
-                document.getElementById(
+            await loadHome();
+
+            break;
+
+        case "gacha":
+
+            await loadGacha();
+
+            break;
+
+    }
+
+}
+
+export function initTabs(){
+
+    const buttons =
+
+        document.querySelectorAll(
+
+            ".tab-button"
+
+        );
+
+    buttons.forEach(
+
+        button=>{
+
+            button.onclick = ()=>{
+
+                openPage(
 
                     button.dataset.page
 
                 );
 
-            if(page){
+            };
 
-                page.classList.add(
+        }
 
-                    "active"
-
-                );
-
-            }
-
-            switch(
-
-                button.dataset.page
-
-            ){
-
-                case "home":
-
-                    await loadHome();
-
-                    break;
-
-                case "gacha":
-
-                    await loadGacha();
-
-                    break;
-
-            }
-
-        };
-
-    });
+    );
 
 }
