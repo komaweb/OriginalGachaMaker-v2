@@ -1,3 +1,78 @@
+//======================================
+// Original Gacha Maker
+// components/tabs.js
+//======================================
+
+import {
+
+    createElement
+
+} from "../utils/dom.js";
+
+export function createTabs(){
+
+    const nav =
+
+        createElement(
+
+            "nav",
+
+            "tab-bar"
+
+        );
+
+    const tabs = [
+
+        ["home","ホーム"],
+        ["gacha","ガチャ"],
+        ["collection","図鑑"],
+        ["editor","編集"],
+        ["settings","設定"]
+
+    ];
+
+    tabs.forEach((tab,index)=>{
+
+        const button =
+
+            createElement(
+
+                "button",
+
+                "tab-button"
+
+            );
+
+        button.dataset.page =
+
+            tab[0];
+
+        button.textContent =
+
+            tab[1];
+
+        if(index===0){
+
+            button.classList.add(
+
+                "active"
+
+            );
+
+        }
+
+        nav.appendChild(
+
+            button
+
+        );
+
+    });
+
+    return nav;
+
+}
+
 export function initTabs(){
 
     const buttons =
@@ -18,80 +93,37 @@ export function initTabs(){
 
     buttons.forEach(button=>{
 
-        button.addEventListener(
+        button.onclick = ()=>{
 
-            "click",
+            buttons.forEach(
 
-            ()=>{
+                b=>b.classList.remove("active")
 
-                buttons.forEach(
+            );
 
-                    b=>b.classList.remove(
+            pages.forEach(
 
-                        "active"
+                p=>p.classList.remove("active")
 
-                    )
+            );
 
-                );
+            button.classList.add("active");
 
-                pages.forEach(
+            const page =
 
-                    p=>p.classList.remove(
+                document.getElementById(
 
-                        "active"
-
-                    )
+                    button.dataset.page
 
                 );
 
-                button.classList.add(
+            if(page){
 
-                    "active"
-
-                );
-
-                const page =
-
-                    document.getElementById(
-
-                        button.dataset.page
-
-                    );
-
-                if(page){
-
-                    page.classList.add(
-
-                        "active"
-
-                    );
-                }
-
-                document.dispatchEvent(
-
-                    new CustomEvent(
-
-                        "pagechange",
-
-                        {
-
-                            detail:{
-
-                                page:
-
-                                    button.dataset.page
-
-                            }
-
-                        }
-
-                    )
-
-                );
+                page.classList.add("active");
 
             }
 
-        );
+        };
 
     });
 
