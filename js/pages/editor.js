@@ -409,3 +409,203 @@ async function loadCharacterSeries(){
     });
 
 }
+
+
+async function saveCharacter(){
+
+    const series =
+
+        document.getElementById(
+
+            "characterSeries"
+
+        );
+
+    const name =
+
+        document.getElementById(
+
+            "characterName"
+
+        );
+
+    const rarity =
+
+        document.getElementById(
+
+            "characterRarity"
+
+        );
+
+    if(
+
+        name.value.trim()===""
+
+    ){
+
+        alert(
+
+            "キャラクター名を入力してください"
+
+        );
+
+        return;
+
+    }
+
+    const character =
+
+        createCharacter();
+
+    character.gachaId =
+
+        series.value;
+
+    character.name =
+
+        name.value.trim();
+
+    character.rarity =
+
+        Number(
+
+            rarity.value
+
+        );
+
+    await addCharacter(
+
+        character
+
+    );
+
+    name.value = "";
+
+    rarity.value = "1";
+
+    await loadCharacterList();
+
+    await loadHome();
+
+}
+async function loadCharacterList(){
+
+    const list =
+
+        document.getElementById(
+
+            "characterList"
+
+        );
+
+    if(!list){
+
+        return;
+
+    }
+
+    list.innerHTML = "";
+
+    const characters =
+
+        await getCharacters();
+
+    const gachas =
+
+        await getGachas();
+
+    characters.forEach(character=>{
+
+        const gacha =
+
+            gachas.find(
+
+                g=>g.id===character.gachaId
+
+            );
+
+        const card =
+
+            createElement(
+
+                "div",
+
+                "panel"
+
+            );
+
+        card.innerHTML = `
+
+<b>
+
+${character.name}
+
+</b>
+
+<br>
+
+${gacha?.name ?? "不明"}
+
+<br>
+
+☆${character.rarity}
+
+`;
+
+        const deleteButton =
+
+            document.createElement(
+
+                "button"
+
+            );
+
+        deleteButton.textContent =
+
+            "削除";
+
+        deleteButton.onclick =
+
+            async()=>{
+
+                if(
+
+                    !confirm(
+
+                        "このキャラクターを削除しますか？"
+
+                    )
+
+                ){
+
+                    return;
+
+                }
+
+                await deleteCharacter(
+
+                    character.id
+
+                );
+
+                await loadCharacterList();
+
+                await loadHome();
+
+            };
+
+        card.appendChild(
+
+            deleteButton
+
+        );
+
+        list.appendChild(
+
+            card
+
+        );
+
+    });
+
+}
