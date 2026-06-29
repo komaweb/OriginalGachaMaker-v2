@@ -2,7 +2,17 @@
 // Original Gacha Maker
 // components/tabs.js
 //======================================
+import {
 
+    loadHome
+
+} from "../pages/home.js";
+
+import {
+
+    loadGacha
+
+} from "../pages/gacha.js";
 import {
 
     createElement
@@ -93,54 +103,57 @@ export function initTabs(){
 
     buttons.forEach(button=>{
 
-        button.onclick = ()=>{
+       button.onclick = ()=>{
 
-            buttons.forEach(
+    buttons.forEach(
 
-                b=>b.classList.remove("active")
-
-            );
-
-            pages.forEach(
-
-                p=>p.classList.remove("active")
-
-            );
-
-            button.classList.add("active");
-
-            const page =
-
-                document.getElementById(
-
-                    button.dataset.page
-
-                );
-
-            if(page){
-
-                page.classList.add("active");
-
-            }
-if(
-
-    button.dataset.page==="gacha"
-
-){
-
-    import(
-
-        "../pages/gacha.js"
-
-    ).then(
-
-        module=>module.loadGacha()
+        b=>b.classList.remove("active")
 
     );
 
-}
-        };
+    pages.forEach(
 
+        p=>p.classList.remove("active")
+
+    );
+
+    button.classList.add("active");
+
+    const page =
+
+        document.getElementById(
+
+            button.dataset.page
+
+        );
+
+    if(page){
+
+        page.classList.add("active");
+
+    }
+
+    if(
+
+        button.dataset.page==="home"
+
+    ){
+
+        loadHome();
+
+    }
+
+    if(
+
+        button.dataset.page==="gacha"
+
+    ){
+
+        loadGacha();
+
+    }
+
+};
     });
 
 }
