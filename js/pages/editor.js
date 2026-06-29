@@ -103,7 +103,7 @@ id="seriesList">
 </h2>
 
 <select
-id="rSeries"
+id="characterSeries"
 class="text-input">
 
 </select>
@@ -111,7 +111,7 @@ class="text-input">
 <br><br>
 
 <input
-id="rName"
+id="characterName"
 class="text-input"
 placeholder="キャラクター名">
 
@@ -305,9 +305,11 @@ async function saveSeries(){
 
     input.value="";
 
-    await loadSeries();
+await loadSeries();
 
-    await loadHome();
+await loadCharacterSeries();
+
+await loadHome();
 
 }
 
