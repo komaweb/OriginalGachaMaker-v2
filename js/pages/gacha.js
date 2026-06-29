@@ -2,6 +2,11 @@
 // Original Gacha Maker
 // pages/gacha.js
 //======================================
+import {
+
+    getCharacters
+
+} from "../database/characterRepository.js";
 
 import {
 
@@ -116,6 +121,9 @@ export async function loadGacha(){
     const gachas =
 
         await getGachas();
+    const characters =
+
+    await getCharacters();
 
     const gacha =
 
@@ -180,8 +188,16 @@ export async function loadGacha(){
 
     <p>
 
-        キャラクター
-        0種類
+キャラクター
+${
+    characters.filter(
+
+        character=>
+
+            character.gachaId===gacha.id
+
+    ).length
+}種類
 
     </p>
 
