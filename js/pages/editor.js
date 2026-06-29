@@ -149,6 +149,33 @@ accept="image/*">
 
 <br><br>
 
+<br><br>
+
+<label>
+
+セリフ
+
+</label>
+
+<input
+id="characterQuote"
+class="text-input"
+placeholder="よろしくね！">
+
+<br><br>
+
+<label>
+
+説明
+
+</label>
+
+<textarea
+id="characterDescription"
+class="text-input"
+rows="4"
+placeholder="キャラクターの説明"></textarea>
+
 <select
 id="characterRarity"
 class="text-input">
