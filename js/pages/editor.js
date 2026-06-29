@@ -176,6 +176,8 @@ class="text-input"
 rows="4"
 placeholder="キャラクターの説明"></textarea>
 
+<br><br>
+
 <select
 id="characterRarity"
 class="text-input">
@@ -845,27 +847,7 @@ buttonArea.className =
 
     "character-buttons";
 
-const editButton =
 
-    document.createElement(
-
-        "button"
-
-    );
-
-editButton.textContent =
-
-    "編集";
-
-editButton.onclick = ()=>{
-
-    alert(
-
-        "編集機能は次回実装"
-
-    );
-
-};
 
         const deleteButton =
 
@@ -908,11 +890,7 @@ editButton.onclick = ()=>{
                 await loadHome();
 
             };
-buttonArea.appendChild(
 
-    editButton
-
-);
 
 buttonArea.appendChild(
 
