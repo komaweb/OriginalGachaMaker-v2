@@ -2,6 +2,12 @@
 // Original Gacha Maker
 // app.js
 //======================================
+import {
+
+    loadHome
+
+} from "./pages/home.js";
+
 
 import {
 
