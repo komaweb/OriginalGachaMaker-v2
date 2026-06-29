@@ -5,9 +5,9 @@
 
 import {
 
-    getDatabase,
+    STORES,
 
-    STORES
+    getStore
 
 } from "./database.js";
 
