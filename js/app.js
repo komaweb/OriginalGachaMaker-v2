@@ -84,6 +84,49 @@ function initEditor(){
     const nameInput =
         document.getElementById("seriesName");
 
+    const bannerInput =
+        document.getElementById("seriesBanner");
+
+    const preview =
+        document.getElementById("seriesPreview");
+
+    bannerInput.addEventListener(
+
+        "change",
+
+        ()=>{
+
+            const file =
+                bannerInput.files[0];
+
+            if(!file){
+
+                return;
+
+            }
+
+            const reader =
+                new FileReader();
+
+            reader.onload = ()=>{
+
+                selectedBanner =
+                    reader.result;
+
+                preview.src =
+                    selectedBanner;
+
+                preview.style.display =
+                    "block";
+
+            };
+
+            reader.readAsDataURL(file);
+
+        }
+
+    );
+
     saveButton.addEventListener(
 
         "click",
@@ -107,11 +150,19 @@ function initEditor(){
 
                 name,
 
-                banner:null
+                banner:selectedBanner
 
             });
 
             nameInput.value="";
+
+            bannerInput.value="";
+
+            preview.src="";
+
+            preview.style.display="none";
+
+            selectedBanner=null;
 
             renderSeriesList();
 
