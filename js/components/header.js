@@ -3,20 +3,42 @@
 // components/header.js
 //======================================
 
+import {
+
+    createElement
+
+} from "../utils/dom.js";
+
 export function createHeader(){
 
-    return `
+    const header =
 
-<header class="header">
+        createElement(
 
-    <h1>
+            "header",
 
-        Original Gacha Maker
+            "header"
 
-    </h1>
+        );
 
-</header>
+    const title =
 
-`;
+        createElement(
+
+            "h1"
+
+        );
+
+    title.textContent =
+
+        "Original Gacha Maker";
+
+    header.appendChild(
+
+        title
+
+    );
+
+    return header;
 
 }
