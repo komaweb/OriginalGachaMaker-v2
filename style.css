@@ -95,3 +95,41 @@ box-shadow:
 rgba(0,0,0,.08);
 
 }
+
+
+<section
+id="home"
+class="page active">
+
+<div class="panel hero">
+
+<h2>
+
+Original Gacha Maker
+
+</h2>
+
+<p>
+
+オリジナルキャラクターで遊べる
+ガチャメーカー
+
+</p>
+
+</div>
+
+<div class="panel">
+
+<h3>
+
+開催中のガチャ
+
+</h3>
+
+<div id="homeGachaList">
+
+</div>
+
+</div>
+
+</section>
