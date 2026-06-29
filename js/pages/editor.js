@@ -11,11 +11,23 @@ import {
 
 import {
 
+    createGacha
+
+} from "../models/gacha.js";
+
+import {
+
     addGacha,
 
     getGachas
 
 } from "../database/gachaRepository.js";
+
+import {
+
+    loadHome
+
+} from "./home.js";
 
 export function renderEditor(){
 
@@ -23,7 +35,9 @@ export function renderEditor(){
 
         createElement(
 
-            "main"
+            "section",
+
+            "page"
 
         );
 
@@ -31,126 +45,125 @@ export function renderEditor(){
 
         "editor";
 
-    const panel =
+    page.innerHTML = `
 
-        createElement(
+<div class="panel">
 
-            "div",
+<h2>
 
-            "panel"
+ガチャシリーズ
 
-        );
+</h2>
 
-    panel.innerHTML = `
+<input
+id="seriesName"
+class="text-input"
+placeholder="シリーズ名">
 
-        <h2>
+<br><br>
 
-            ガチャシリーズ
+<button
+id="saveSeries"
+class="primary-button">
 
-        </h2>
+シリーズを保存
 
-        <input
-            id="seriesName"
-            placeholder="シリーズ名">
+</button>
 
-        <br><br>
+<hr>
 
-        <button
-            id="saveSeries">
+<div
+id="seriesList">
 
-            保存
+</div>
 
-        </button>
+</div>
 
-        <div
-            id="seriesList"
-            style="margin-top:24px;">
+`;
 
-        </div>
-
-    `;
-
-    page.appendChild(
-
-        panel
-
-    );
-
-    requestAnimationFrame(
-
-        initEditor
-
-    );
+    initEditor();
 
     return page;
 
 }
 
-async function initEditor(){
+function initEditor(){
 
-    const button =
+    setTimeout(()=>{
+
+        const button =
+
+            document.getElementById(
+
+                "saveSeries"
+
+            );
+
+        if(!button){
+
+            return;
+
+        }
+
+        button.onclick =
+
+            saveSeries;
+
+        loadSeries();
+
+    });
+
+}
+
+async function saveSeries(){
+
+    const input =
 
         document.getElementById(
 
-            "saveSeries"
+            "seriesName"
 
         );
 
-    if(!button){
+    const name =
+
+        input.value.trim();
+
+    if(name===""){
+
+        alert(
+
+            "シリーズ名を入力してください"
+
+        );
 
         return;
 
     }
 
-    button.onclick =
+    const gacha =
 
-        async()=>{
+        createGacha();
 
-            const input =
+    gacha.name =
 
-                document.getElementById(
+        name;
 
-                    "seriesName"
+    await addGacha(
 
-                );
+        gacha
 
-            const name =
+    );
 
-                input.value.trim();
+    input.value="";
 
-            if(name===""){
+    await loadSeries();
 
-                alert(
-
-                    "シリーズ名を入力してください"
-
-                );
-
-                return;
-
-            }
-
-            await addGacha({
-
-                id:crypto.randomUUID(),
-
-                name,
-
-                banner:null
-
-            });
-
-            input.value="";
-
-            renderSeriesList();
-
-        };
-
-    renderSeriesList();
+    await loadHome();
 
 }
 
-async function renderSeriesList(){
+async function loadSeries(){
 
     const list =
 
@@ -174,7 +187,7 @@ async function renderSeriesList(){
 
     gachas.forEach(gacha=>{
 
-        const div =
+        const card =
 
             createElement(
 
@@ -184,13 +197,13 @@ async function renderSeriesList(){
 
             );
 
-        div.textContent =
+        card.textContent =
 
             gacha.name;
 
         list.appendChild(
 
-            div
+            card
 
         );
 
