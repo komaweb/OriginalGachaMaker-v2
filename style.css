@@ -200,3 +200,52 @@ body{
     transform:translateY(-2px);
 
 }
+
+
+.gacha-header{
+
+    text-align:center;
+
+}
+
+.gacha-banner{
+
+    width:100%;
+
+    height:180px;
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    background:#eef2ff;
+
+    margin-bottom:20px;
+
+}
+
+.gacha-banner img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.gacha-buttons{
+
+    display:flex;
+
+    gap:16px;
+
+    margin-top:24px;
+
+}
+
+.gacha-buttons button{
+
+    flex:1;
+
+}
