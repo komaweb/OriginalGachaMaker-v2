@@ -62,6 +62,7 @@ window.addEventListener(
     "DOMContentLoaded",
 
     async()=>{
+        alert("app start");
 
         await initDatabase();
 
