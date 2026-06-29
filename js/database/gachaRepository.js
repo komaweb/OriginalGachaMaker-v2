@@ -11,6 +11,10 @@ import {
 
 } from "./database.js";
 
+//==============================
+// 全取得
+//==============================
+
 export async function getGachas(){
 
     return new Promise(
@@ -18,11 +22,15 @@ export async function getGachas(){
         (resolve,reject)=>{
 
             const request =
-    getStore(
-        STORES.gachas,
-        "readonly"
-    ).getAll();
-            
+
+                getStore(
+
+                    STORES.gachas,
+
+                    "readonly"
+
+                ).getAll();
+
             request.onsuccess = ()=>{
 
                 resolve(
@@ -49,6 +57,10 @@ export async function getGachas(){
 
 }
 
+//==============================
+// 追加
+//==============================
+
 export async function addGacha(gacha){
 
     return new Promise(
@@ -57,23 +69,13 @@ export async function addGacha(gacha){
 
             const request =
 
-                getStore()
-
-                .transaction(
+                getStore(
 
                     STORES.gachas,
 
                     "readwrite"
 
-                )
-
-                .objectStore(
-
-                    STORES.gachas
-
-                )
-
-                .add(gacha);
+                ).add(gacha);
 
             request.onsuccess = ()=>{
 
@@ -96,6 +98,10 @@ export async function addGacha(gacha){
     );
 
 }
+
+//==============================
+// 更新
+//==============================
 
 export async function updateGacha(gacha){
 
@@ -105,23 +111,13 @@ export async function updateGacha(gacha){
 
             const request =
 
-                getStore()
-
-                .transaction(
+                getStore(
 
                     STORES.gachas,
 
                     "readwrite"
 
-                )
-
-                .objectStore(
-
-                    STORES.gachas
-
-                )
-
-                .put(gacha);
+                ).put(gacha);
 
             request.onsuccess = ()=>{
 
@@ -145,6 +141,10 @@ export async function updateGacha(gacha){
 
 }
 
+//==============================
+// 削除
+//==============================
+
 export async function deleteGacha(id){
 
     return new Promise(
@@ -153,23 +153,13 @@ export async function deleteGacha(id){
 
             const request =
 
-                getStore()
-
-                .transaction(
+                getStore(
 
                     STORES.gachas,
 
                     "readwrite"
 
-                )
-
-                .objectStore(
-
-                    STORES.gachas
-
-                )
-
-                .delete(id);
+                ).delete(id);
 
             request.onsuccess = ()=>{
 
