@@ -673,15 +673,43 @@ if(standFile){
 
         );
 
+    character.quote =
+
+    document.getElementById(
+
+        "characterQuote"
+
+    ).value.trim();
+
+character.description =
+
+    document.getElementById(
+
+        "characterDescription"
+
+    ).value.trim();
+
     await addCharacter(
 
         character
 
     );
 
-    name.value = "";
+name.value="";
 
-    rarity.value = "1";
+rarity.value="1";
+
+document.getElementById(
+
+    "characterQuote"
+
+).value="";
+
+document.getElementById(
+
+    "characterDescription"
+
+).value="";
 
     await loadCharacterList();
 
