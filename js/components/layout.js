@@ -17,7 +17,9 @@ import {
 
 import {
 
-    createTabs
+    createTabs,
+
+    initTabs
 
 } from "./tabs.js";
 
@@ -35,10 +37,6 @@ export function createLayout(
 
         );
 
-    root.id =
-
-        "layout";
-
     root.appendChild(
 
         createHeader()
@@ -51,23 +49,19 @@ export function createLayout(
 
     );
 
-    const main =
-
-        createElement(
-
-            "main"
-
-        );
-
-    main.appendChild(
+    root.appendChild(
 
         page
 
     );
 
-    root.appendChild(
+    requestAnimationFrame(
 
-        main
+        ()=>{
+
+            initTabs();
+
+        }
 
     );
 
