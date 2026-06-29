@@ -7,26 +7,26 @@ export function createCharacter(){
 
     return{
 
-        id:crypto.randomUUID(),
+    id:crypto.randomUUID(),
 
-        gachaId:"",
+    gachaId:"",
 
-        name:"",
+    name:"",
 
-        rarity:1,
+    rarity:1,
 
-        iconImage:null,
+    iconImage:null,
 
-        standImage:null,
+    standImage:null,
 
-        quote:"",
+    quote:"",
 
-        description:"",
+    description:"",
 
-        obtained:false,
+    obtained:false,
 
-        createdAt:Date.now()
+    createdAt:Date.now()
 
-    };
+};
 
 }
