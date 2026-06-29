@@ -112,6 +112,10 @@ export async function loadHome(){
 
     getCurrentGacha();
 
+    const characters =
+
+    await getCharacters();
+
     if(gachas.length===0){
 
         list.innerHTML = `
@@ -175,7 +179,15 @@ ${gacha.name}
 <p>
 
 キャラクター
-0種類
+${
+    characters.filter(
+
+        character=>
+
+            character.gachaId===gacha.id
+
+    ).length
+}種類
 
 </p>
 
