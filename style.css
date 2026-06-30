@@ -537,13 +537,10 @@ body{
 
 .gacha-box{
 
-    width:80px;
+    width:72px;
+    height:72px;
 
-    height:80px;
-
-    background:#1a1a1a;
-
-    border-radius:18px;
+    border-radius:16px;
 
     overflow:hidden;
 
@@ -563,10 +560,7 @@ body{
 
     object-fit:cover;
 
-    display:block;
-
 }
-
 .poyon{
 
     animation:poyon .28s;
