@@ -671,7 +671,7 @@ body{
 
 .gacha-result-image{
 
-    width:240px;
+    width:180px;
 
     max-width:100%;
 
@@ -681,7 +681,7 @@ body{
 
     display:block;
 
-    margin:0 auto 18px;
+    margin:0 auto 16px;
 
 }
 
@@ -691,23 +691,3 @@ body{
 
 }
 
-
-.gacha-result-quote{
-
-    margin:20px 0;
-
-    padding:14px 18px;
-
-    background:#f4f6ff;
-
-    border-left:4px solid #6f82ff;
-
-    border-radius:12px;
-
-    font-style:italic;
-
-    color:#555;
-
-    line-height:1.7;
-
-}
