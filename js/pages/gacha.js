@@ -22,6 +22,12 @@ import {
 
 } from "../database/gachaRepository.js";
 
+import {
+
+    playGachaAnimation
+
+} from "../animation/gachaAnimation.js";
+
 export function renderGacha(){
 
     const page =
@@ -235,17 +241,49 @@ class="present-grid">
 
     document.getElementById(
 
-        "singleGachaButton"
+    "singleGachaButton"
 
-    ).onclick = ()=>{
+).onclick = async()=>{
 
-        alert(
+    const pool =
 
-            "1回引く（次回実装）"
+        characters.filter(
+
+            character=>
+
+                character.gachaId===gacha.id
 
         );
 
-    };
+    if(
+
+        pool.length===0
+
+    ){
+
+        alert(
+
+            "キャラクターが登録されていません"
+
+        );
+
+        return;
+
+    }
+
+    await playGachaAnimation(
+
+        gacha,
+
+        [
+
+            pool[0]
+
+        ]
+
+    );
+
+};
 
     document.getElementById(
 
