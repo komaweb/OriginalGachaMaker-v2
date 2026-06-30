@@ -428,6 +428,11 @@ document.getElementById(
     "seriesBox"
 
 ).value="";
+    document.getElementById(
+
+    "seriesBox"
+
+).value="";
     
 
 await loadSeries();
