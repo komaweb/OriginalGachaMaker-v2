@@ -173,52 +173,49 @@ export async function loadGacha(){
 
     <div class="gacha-banner">
 
-        ${
-            gacha.banner
-
-            ?
-
-            `<img src="${blobToURL(
-
-    gacha.banner
-
-)}">`
-
-            :
-
-            `<div class="home-gacha-placeholder">
-
-                No Image
-
-            </div>`
-
-        }
+        ...
 
     </div>
 
-    <h2>
+    <div class="home-series-header">
 
-        ${gacha.name}
+        <div class="home-series-title">
 
-    </h2>
+            ${
+                gacha.boxImage
+                ?
+                `<img
+                class="home-box-icon"
+                src="${blobToURL(
+                    gacha.boxImage
+                )}">`
+                :
+                ""
+            }
 
-    <p>
+            <h2>
 
-キャラクター
-${
-    characters.filter(
+                ${gacha.name}
 
-        character=>
+            </h2>
 
-            character.gachaId===gacha.id
+        </div>
 
-    ).length
-}種類
+        <span
+        class="home-character-count">
 
-    </p>
+            ${
+                characters.filter(
+                    character=>
+                        character.gachaId===gacha.id
+                ).length
+            }種類
+
+        </span>
+
+    </div>
 
 </div>
-
 
 `;
 
