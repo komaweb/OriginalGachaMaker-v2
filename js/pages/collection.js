@@ -190,6 +190,8 @@ async function loadCollection(){
                 "collection-card"
 
             );
+card.style.cursor = "pointer";
+        
 
         const image =
 
@@ -225,6 +227,58 @@ ${character.name}
 </div>
 
 `;
+
+        card.onclick = async()=>{
+
+    const overlay =
+
+        document.createElement(
+
+            "div"
+
+        );
+
+    overlay.className =
+
+        "gacha-overlay";
+
+    const grid =
+
+        document.createElement(
+
+            "div"
+
+        );
+
+    overlay.appendChild(
+
+        grid
+
+    );
+
+    document.body.appendChild(
+
+        overlay
+
+    );
+
+    await showResultDetail(
+
+        overlay,
+
+        grid,
+
+        character,
+
+        ()=>{
+
+            overlay.remove();
+
+        }
+
+    );
+
+};
 
         grid.appendChild(
 
