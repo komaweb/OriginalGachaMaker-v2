@@ -172,6 +172,13 @@ await wait(
 );
 
 grid.innerHTML = "";
+grid.classList.remove(
+    "single"
+);
+
+grid.style.display = "flex";
+grid.style.justifyContent = "center";
+grid.style.alignItems = "center";    
 
 const character =
     results[0];
