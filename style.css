@@ -437,7 +437,7 @@ body{
 
     object-fit:contain;
 
-    display:block;
+    border-radius:18px;
 
 }
 
