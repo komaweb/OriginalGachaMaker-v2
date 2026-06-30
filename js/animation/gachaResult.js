@@ -260,35 +260,35 @@ export async function showResultList(
 
         );
 
-        card.onclick =
+card.onclick =
 
-            ()=>{
+    async()=>{
 
-                showResultDetail(
+        await showResultDetail(
+
+            overlay,
+
+            grid,
+
+            character,
+
+            async()=>{
+
+                await showResultList(
 
                     overlay,
 
                     grid,
 
-                    character,
-
-                    ()=>{
-
-                        showResultList(
-
-                            overlay,
-
-                            grid,
-
-                            results
-
-                        );
-
-                    }
+                    results
 
                 );
 
-            };
+            }
+
+        );
+
+    };
 
         list.appendChild(
 
