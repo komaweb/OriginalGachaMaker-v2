@@ -645,3 +645,24 @@ body{
     margin-top:20px;
 
 }
+
+
+.gacha-result-quote{
+
+    margin:20px 0;
+
+    padding:14px 18px;
+
+    background:#f4f6ff;
+
+    border-left:4px solid #6f82ff;
+
+    border-radius:12px;
+
+    font-style:italic;
+
+    color:#555;
+
+    line-height:1.7;
+
+}
