@@ -768,15 +768,23 @@ body{
 
 }
 
-#collectionGrid{
+.collection-series-grid{
 
     display:grid;
 
-    grid-template-columns:repeat(auto-fill,64px);
+    grid-template-columns:repeat(auto-fill,minmax(64px,64px));
 
     justify-content:center;
 
     gap:8px;
+
+    padding:8px 0 20px;
+
+}
+
+#collectionGrid details{
+
+    width:100%;
 
 }
 
