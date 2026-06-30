@@ -180,18 +180,37 @@ grid.style.display = "flex";
 grid.style.justifyContent = "center";
 grid.style.alignItems = "center";    
 
-await showResultDetail(
+if(
 
-    overlay,
+    results.length===1
 
-    grid,
+){
 
-    results[0]
+    await showResultDetail(
 
-);
+        overlay,
+
+        grid,
+
+        results[0]
+
+    );
+
+}else{
+
+    await showResultList(
+
+        overlay,
+
+        grid,
+
+        results
+
+    );
+
+}
 
 return results;
-
 
 
     async function showResultDetail(
@@ -298,5 +317,114 @@ id="closeResult">
     );
 
 }
+
+}
+async function showResultList(
+
+    overlay,
+
+    grid,
+
+    results
+
+){
+
+    grid.innerHTML="";
+
+    grid.className="gacha-list";
+
+    const list=
+
+        document.createElement(
+
+            "div"
+
+        );
+
+    list.className=
+
+        "gacha-list-grid";
+
+    for(
+
+        const character
+
+        of results
+
+    ){
+
+        const img=
+
+            document.createElement(
+
+                "img"
+
+            );
+
+        img.className=
+
+            "gacha-list-image";
+
+        img.src=
+
+            blobToURL(
+
+                character.iconImage
+
+            );
+
+        img.onclick=
+
+            async()=>{
+
+                await showResultDetail(
+
+                    overlay,
+
+                    grid,
+
+                    character
+
+                );
+
+            };
+
+        list.appendChild(
+
+            img
+
+        );
+
+    }
+
+    grid.appendChild(
+
+        list
+
+    );
+
+    const close=
+
+        document.createElement(
+
+            "button"
+
+        );
+
+    close.textContent=
+
+        "閉じる";
+
+    close.onclick=()=>{
+
+        overlay.remove();
+
+    };
+
+    grid.appendChild(
+
+        close
+
+    );
 
 }
