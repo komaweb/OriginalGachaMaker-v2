@@ -366,18 +366,18 @@ ${character.name}
 
     }
 
-    details.appendChild(
+details.appendChild(
 
-        seriesGrid
+    seriesGrid
 
-    );
+);
 
-    grid.appendChild(
+grid.appendChild(
 
-        details
+    details
 
-    );
+);
 
 }
 
-      
+}
