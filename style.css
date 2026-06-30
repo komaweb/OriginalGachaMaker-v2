@@ -979,3 +979,36 @@ details[open]>.collection-series::before{
     content:"";
 
 }
+
+
+.collection-series{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+.collection-series-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.collection-series-icon{
+
+    width:42px;
+
+    height:42px;
+
+    object-fit:contain;
+
+    flex-shrink:0;
+
+}
