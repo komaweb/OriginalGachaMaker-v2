@@ -899,35 +899,6 @@ body{
 
 .collection-series{
 
-    cursor:pointer;
-
-    font-size:20px;
-
-    font-weight:bold;
-
-    padding:10px 0;
-
-    user-select:none;
-
-}
-
-.collection-series-grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fill,64px);
-
-    justify-content:center;
-
-    gap:8px;
-
-    margin-bottom:18px;
-
-}
-
-
-.collection-series{
-
     display:flex;
 
     align-items:center;
@@ -955,6 +926,21 @@ body{
     user-select:none;
 
 }
+
+.collection-series-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fill,64px);
+
+    justify-content:center;
+
+    gap:8px;
+
+    margin-bottom:18px;
+
+}
+
 
 .collection-series::before{
 
@@ -985,15 +971,7 @@ details[open]>.collection-series::before{
 }
 
 
-.collection-series{
 
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-}
 
 .collection-series-left{
 
