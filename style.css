@@ -813,3 +813,17 @@ body{
     text-align:center;
 
 }
+
+.collection-heading{
+
+    grid-column:1/-1;
+
+    margin:18px 0 8px;
+
+    color:#f6c343;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+}
