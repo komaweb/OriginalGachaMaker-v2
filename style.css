@@ -625,18 +625,63 @@ body{
     text-align:center;
 
 }
+.gacha-result-stars{
+
+    margin:10px 0 14px;
+
+    font-size:26px;
+
+    color:#f6c343;
+
+    letter-spacing:4px;
+
+}
+.gacha-result-quote{
+
+    width:100%;
+
+    margin:18px 0;
+
+    padding:14px 18px;
+
+    background:#f3f0ff;
+
+    border-radius:14px;
+
+    text-align:center;
+
+    font-style:italic;
+
+    color:#555;
+
+    line-height:1.7;
+
+}
+
+.gacha-result-description{
+
+    margin-top:10px;
+
+    line-height:1.8;
+
+    color:#444;
+
+}
+
 
 .gacha-result-image{
 
-    width:220px;
+    width:240px;
 
-    height:220px;
+    max-width:100%;
+
+    height:auto;
 
     object-fit:contain;
 
     display:block;
 
-    margin:0 auto 16px;
+    margin:0 auto 18px;
 
 }
 
