@@ -537,8 +537,8 @@ body{
 
 .gacha-box{
 
-    width:72px;
-    height:72px;
+    width:64px;
+    height:64px;
 
     border-radius:16px;
 
@@ -739,9 +739,9 @@ body{
 
 .gacha-list-image{
 
-    width:72px;
+    width:64px;
 
-    height:72px;
+    height:64px;
 
     border-radius:16px;
 
