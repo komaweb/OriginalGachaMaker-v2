@@ -8,6 +8,11 @@ import {
     createElement
 
 } from "../utils/dom.js";
+import {
+
+    showResultDetail
+
+} from "../animation/gachaResult.js";
 
 import {
 
