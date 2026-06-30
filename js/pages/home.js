@@ -177,43 +177,48 @@ No Image
 <div
 class="home-gacha-body">
 
-<div class="home-series-title">
+<div
+class="home-series-header">
 
-    ${
-        gacha.boxImage
-        ?
-        `<img
-        class="home-box-icon"
-        src="${blobToURL(
+    <div
+    class="home-series-title">
+
+        ${
             gacha.boxImage
-        )}">`
-        :
-        ""
-    }
+            ?
+            `<img
+            class="home-box-icon"
+            src="${blobToURL(
+                gacha.boxImage
+            )}">`
+            :
+            ""
+        }
 
-    <h3>
+        <h3>
 
-        ${gacha.name}
+            ${gacha.name}
 
-    </h3>
+        </h3>
+
+    </div>
+
+    <span
+    class="home-character-count">
+
+        ${
+            characters.filter(
+
+                character=>
+
+                    character.gachaId===gacha.id
+
+            ).length
+        }種類
+
+    </span>
 
 </div>
-
-
-<p>
-
-キャラクター
-${
-    characters.filter(
-
-        character=>
-
-            character.gachaId===gacha.id
-
-    ).length
-}種類
-
-</p>
 
 </div>
 
