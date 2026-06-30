@@ -999,15 +999,23 @@ details[open]>.collection-series::before{
 
     gap:12px;
 
+    height:36px;
+
 }
 
 .collection-series-icon{
 
-    width:42px;
+    width:36px;
 
-    height:42px;
+    height:36px;
+
+    min-width:36px;
+
+    min-height:36px;
 
     object-fit:contain;
+
+    display:block;
 
     flex-shrink:0;
 
