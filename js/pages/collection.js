@@ -22,6 +22,12 @@ import {
 
 import {
 
+    getGachas
+
+} from "../database/gachaRepository.js";
+
+import {
+
     blobToURL
 
 } from "../utils/image.js";
@@ -108,6 +114,11 @@ async function loadCollection(){
     const characters =
 
         await getCharacters();
+
+    const gachas =
+
+    await getGachas();
+    
     characters.sort(
 
     (a,b)=>{
@@ -136,46 +147,234 @@ async function loadCollection(){
 
     let currentRarity = 0;
 
+for(
+
+    const gacha
+
+    of gachas
+
+){
+
+    const details =
+
+        document.createElement(
+
+            "details"
+
+        );
+
+    details.open = true;
+
+    const summary =
+
+        document.createElement(
+
+            "summary"
+
+        );
+
+    summary.className =
+
+        "collection-series";
+
+    summary.textContent =
+
+        gacha.name;
+
+    details.appendChild(
+
+        summary
+
+    );
+
+    const seriesGrid =
+
+        document.createElement(
+
+            "div"
+
+        );
+
+    seriesGrid.className =
+
+        "collection-series-grid";
+
+    const seriesCharacters =
+
+        characters.filter(
+
+            character=>
+
+                character.gachaId===gacha.id
+
+        );
+
+    let currentRarity = 0;
+
     for(
 
         const character
 
-        of characters
+        of seriesCharacters
 
     ){
+
         if(
 
-    character.rarity!==currentRarity
+            character.rarity!==currentRarity
 
-){
+        ){
 
-    currentRarity =
+            currentRarity =
 
-        character.rarity;
+                character.rarity;
 
-    const heading =
+            const heading =
 
-        document.createElement(
+                document.createElement(
 
-            "h3"
+                    "h3"
+
+                );
+
+            heading.className =
+
+                "collection-heading";
+
+            heading.textContent =
+
+                "★".repeat(
+
+                    currentRarity
+
+                );
+
+            seriesGrid.appendChild(
+
+                heading
+
+            );
+
+        }
+
+        const card =
+
+            createElement(
+
+                "div",
+
+                "collection-card"
+
+            );
+
+        card.style.cursor =
+
+            "pointer";
+
+        const image =
+
+            character.iconImage
+
+            ?
+
+            blobToURL(
+
+                character.iconImage
+
+            )
+
+            :
+
+            "https://placehold.co/72x72?text=?";
+
+        card.innerHTML = `
+
+<img
+
+src="${image}"
+
+class="collection-image">
+
+<div
+class="collection-name">
+
+${character.name}
+
+</div>
+
+`;
+
+        card.onclick =
+
+            async()=>{
+
+                const overlay =
+
+                    document.createElement(
+
+                        "div"
+
+                    );
+
+                overlay.className =
+
+                    "gacha-overlay";
+
+                const resultGrid =
+
+                    document.createElement(
+
+                        "div"
+
+                    );
+
+                overlay.appendChild(
+
+                    resultGrid
+
+                );
+
+                document.body.appendChild(
+
+                    overlay
+
+                );
+
+                await showResultDetail(
+
+                    overlay,
+
+                    resultGrid,
+
+                    character,
+
+                    ()=>{
+
+                        overlay.remove();
+
+                    }
+
+                );
+
+            };
+
+        seriesGrid.appendChild(
+
+            card
 
         );
 
-    heading.className =
+    }
 
-        "collection-heading";
+    details.appendChild(
 
-    heading.textContent =
+        seriesGrid
 
-        "★".repeat(
-
-            currentRarity
-
-        );
+    );
 
     grid.appendChild(
 
-        heading
+        details
 
     );
 
