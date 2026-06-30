@@ -867,3 +867,32 @@ body{
     transform:scale(.97);
 
 }
+
+
+.collection-series{
+
+    cursor:pointer;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    padding:10px 0;
+
+    user-select:none;
+
+}
+
+.collection-series-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fill,64px);
+
+    justify-content:center;
+
+    gap:8px;
+
+    margin-bottom:18px;
+
+}
