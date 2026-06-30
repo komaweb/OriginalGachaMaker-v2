@@ -117,17 +117,35 @@ export async function playGachaAnimation(
 
             "gacha-image";
 
-        image.src =
+image.src =
 
-            gacha.boxImage
+    gacha.boxImage
 
-            ||
+    ?
+
+    blobToURL(
+
+        gacha.boxImage
+
+    )
+
+    :
+
+    (
+        gacha.banner
+
+        ?
+
+        blobToURL(
 
             gacha.banner
 
-            ||
+        )
 
-            "";
+        :
+
+        ""
+    );
 
         box.appendChild(
 
