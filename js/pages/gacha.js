@@ -209,33 +209,6 @@ ${
 
 </div>
 
-<div
-id="gachaOverlay"
-class="hidden">
-
-<div
-class="gacha-overlay-content">
-
-<div
-id="presentGrid"
-class="present-grid">
-
-<div class="present-box"></div>
-<div class="present-box"></div>
-<div class="present-box"></div>
-<div class="present-box"></div>
-<div class="present-box"></div>
-<div class="present-box"></div>
-<div class="present-box"></div>
-<div class="present-box"></div>
-<div class="present-box"></div>
-<div class="present-box"></div>
-
-</div>
-
-</div>
-
-</div>
 
 `;
 
