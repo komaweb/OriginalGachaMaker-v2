@@ -5,6 +5,13 @@
 
 import {
 
+    loadCollection
+
+} from "../pages/collection.js";
+
+
+import {
+
     createElement
 
 } from "../utils/dom.js";
@@ -153,6 +160,11 @@ export async function openPage(
 
             break;
 
+            case "collection":
+
+    await loadCollection();
+
+    break;
     }
 
 }
