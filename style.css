@@ -827,3 +827,41 @@ body{
     font-weight:bold;
 
 }
+
+/*======================================
+    Buttons
+======================================*/
+
+.primary-button{
+
+    padding:12px 22px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#7b61ff;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.15s;
+
+}
+
+.primary-button:hover{
+
+    background:#6b50f0;
+
+}
+
+.primary-button:active{
+
+    transform:scale(.97);
+
+}
