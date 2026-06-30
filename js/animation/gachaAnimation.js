@@ -180,54 +180,87 @@ grid.style.display = "flex";
 grid.style.justifyContent = "center";
 grid.style.alignItems = "center";    
 
-const character =
-    results[0];
+await showResultDetail(
 
-const card =
-    document.createElement(
-        "div"
+    overlay,
+
+    grid,
+
+    results[0]
+
+);
+
+return results;
+
+
+
+    async function showResultDetail(
+
+    overlay,
+
+    grid,
+
+    character
+
+){
+
+    grid.innerHTML = "";
+
+    grid.classList.remove(
+        "single"
     );
 
-card.className =
-    "gacha-result";
+    grid.style.display = "flex";
+    grid.style.justifyContent = "center";
+    grid.style.alignItems = "center";
 
-card.innerHTML = `
+    const card =
+        document.createElement(
+            "div"
+        );
+
+    card.className =
+        "gacha-result";
+
+    card.innerHTML = `
 
 <div
 class="gacha-result-body">
 
-    <img
-    class="gacha-result-image"
-    src="${blobToURL(
-        character.standImage
-    )}">
+<img
+class="gacha-result-image"
+src="${blobToURL(
+    character.standImage
+)}">
 
-    <h2>
+<h2>
 
-    ${character.name}
+${character.name}
 
-    </h2>
+</h2>
 
-    <p
-    class="gacha-result-stars">
+<p
+class="gacha-result-stars">
 
-    ${"★".repeat(character.rarity)}
+${"★".repeat(
+    character.rarity
+)}
 
-    </p>
+</p>
 
-    <p
-    class="gacha-result-quote">
+<p
+class="gacha-result-quote">
 
-    「${character.quote}」
+「${character.quote}」
 
-    </p>
+</p>
 
-    <p
-    class="gacha-result-description">
+<p
+class="gacha-result-description">
 
-    ${character.description}
+${character.description}
 
-    </p>
+</p>
 
 </div>
 
@@ -240,29 +273,30 @@ id="closeResult">
 
 `;
 
-grid.appendChild(
-    card
-);
+    grid.appendChild(
+        card
+    );
 
-await new Promise(
-    resolve=>{
+    await new Promise(
 
-        document
-        .getElementById(
-            "closeResult"
-        )
-        .onclick=()=>{
+        resolve=>{
 
-            overlay.remove();
+            document
+            .getElementById(
+                "closeResult"
+            )
+            .onclick=()=>{
 
-            resolve();
+                overlay.remove();
 
-        };
+                resolve();
 
-    }
+            };
 
-);
+        }
 
-return results;
+    );
+
+}
 
 }
