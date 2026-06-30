@@ -932,6 +932,10 @@ body{
 
     align-items:center;
 
+    justify-content:flex-start;
+
+    gap:12px;
+
     margin:16px 0 12px;
 
     padding:14px 18px;
@@ -998,8 +1002,6 @@ details[open]>.collection-series::before{
     align-items:center;
 
     gap:12px;
-
-    height:36px;
 
 }
 
