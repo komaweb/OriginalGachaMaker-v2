@@ -1052,3 +1052,25 @@ details[open]>.collection-series::before{
     margin:0;
 
 }
+
+.home-series-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.home-character-count{
+
+    font-size:14px;
+
+    color:#777;
+
+    white-space:nowrap;
+
+}
