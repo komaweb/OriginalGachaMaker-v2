@@ -177,11 +177,28 @@ No Image
 <div
 class="home-gacha-body">
 
-<h3>
+<div class="home-series-title">
 
-${gacha.name}
+    ${
+        gacha.boxImage
+        ?
+        `<img
+        class="home-box-icon"
+        src="${blobToURL(
+            gacha.boxImage
+        )}">`
+        :
+        ""
+    }
 
-</h3>
+    <h3>
+
+        ${gacha.name}
+
+    </h3>
+
+</div>
+
 
 <p>
 
