@@ -4,6 +4,12 @@
 //======================================
 import {
 
+    blobToURL
+
+} from "../utils/image.js";
+
+import {
+
     getCharacters
 
 } from "../database/characterRepository.js";
@@ -150,9 +156,11 @@ class="home-gacha-banner">
 
 ${
     gacha.banner
-    ? `
-<img
-src="${gacha.banner}">
+    ? `<img src="${blobToURL(
+
+    gacha.banner
+
+)}">
 `
     : `
 <div
