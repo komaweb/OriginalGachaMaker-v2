@@ -205,9 +205,10 @@ ${character.name}
 
 </h2>
 
-<p>
+<p
+class="gacha-result-stars">
 
-☆${character.rarity}
+${"★".repeat(character.rarity)}
 
 </p>
 
@@ -217,12 +218,12 @@ ${character.name}
 
 </div>
 
-<p>
+<p
+class="gacha-result-description">
 
 ${character.description}
 
 </p>
-
 <button
 id="closeResult">
 
