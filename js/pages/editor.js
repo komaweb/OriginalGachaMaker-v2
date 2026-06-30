@@ -101,6 +101,19 @@ accept="image/*">
 
 <br><br>
 
+<label>
+
+箱画像
+
+</label>
+
+<input
+id="seriesBox"
+type="file"
+accept="image/*">
+
+<br><br>
+
 <button
 id="saveSeries"
 class="primary-button">
@@ -373,6 +386,29 @@ if(
         );
 
 }
+    const box =
+
+    document.getElementById(
+
+        "seriesBox"
+
+    ).files[0];
+
+if(
+
+    box
+
+){
+
+    gacha.boxImage =
+
+        await fileToBlob(
+
+            box
+
+        );
+
+}
 
     await addGacha(
 
@@ -385,6 +421,11 @@ if(
 document.getElementById(
 
     "seriesBanner"
+
+).value="";
+    document.getElementById(
+
+    "seriesBox"
 
 ).value="";
     
