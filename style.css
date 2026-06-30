@@ -772,16 +772,31 @@ body{
 
     display:grid;
 
-    grid-template-columns:repeat(auto-fill,minmax(64px,64px));
+    grid-template-columns:repeat(
+        auto-fit,
+        minmax(64px,64px)
+    );
 
     justify-content:center;
 
     gap:8px;
 
-    padding:8px 0 20px;
+    width:100%;
+
+    margin-bottom:18px;
+
+}
+#collectionGrid{
+
+    width:100%;
 
 }
 
+#collectionGrid details{
+
+    width:100%;
+
+}
 #collectionGrid details{
 
     width:100%;
