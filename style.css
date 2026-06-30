@@ -927,17 +927,15 @@ body{
 
     align-items:center;
 
-    margin:14px 0 10px;
+    margin:16px 0 12px;
 
-    padding:12px 16px;
+    padding:14px 18px;
 
-    border-radius:14px;
+    border-radius:16px;
 
-    background:#f4f1ff;
+    background:#7b61ff;
 
-    border:1px solid #d8ccff;
-
-    color:#6f53e6;
+    color:white;
 
     font-size:17px;
 
@@ -947,27 +945,15 @@ body{
 
     user-select:none;
 
-    transition:.2s;
-
-}
-
-.collection-series:hover{
-
-    background:#ede7ff;
-
-    border-color:#bca8ff;
-
 }
 
 .collection-series::before{
 
     content:"▶";
 
-    color:#7b61ff;
+    color:white;
 
     margin-right:10px;
-
-    transition:.2s;
 
 }
 
