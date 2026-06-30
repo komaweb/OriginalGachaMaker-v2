@@ -1020,3 +1020,35 @@ details[open]>.collection-series::before{
     flex-shrink:0;
 
 }
+
+.home-series-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.home-box-icon{
+
+    width:40px;
+
+    height:40px;
+
+    min-width:40px;
+
+    object-fit:contain;
+
+    display:block;
+
+    flex-shrink:0;
+
+}
+
+.home-series-title h3{
+
+    margin:0;
+
+}
