@@ -169,14 +169,27 @@ export async function loadGacha(){
 
     root.innerHTML = `
 
-<div class="gacha-header">
+<div class="gacha-banner">
 
-    <div class="gacha-banner">
+    ${
+        gacha.banner
+        ?
+        `<img
+        src="${blobToURL(
+            gacha.banner
+        )}">`
+        :
+        `
+<div
+class="home-gacha-placeholder">
 
-        ...
+No Image
 
-    </div>
+</div>
+`
+    }
 
+</div>
     <div class="home-series-header">
 
         <div class="home-series-title">
