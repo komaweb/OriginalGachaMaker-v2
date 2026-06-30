@@ -397,7 +397,9 @@ body{
 
     display:grid;
 
-    grid-template-columns:repeat(5,1fr);
+    grid-template-columns:repeat(5,80px);
+
+    justify-content:center;
 
     gap:14px;
 
