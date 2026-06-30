@@ -717,9 +717,9 @@ body{
 
     display:grid;
 
-    grid-template-columns:repeat(5,72px);
+    grid-template-columns:repeat(5,56px);
 
-    gap:14px;
+    gap:10px;
 
     justify-content:center;
 
@@ -739,15 +739,13 @@ body{
 
 .gacha-list-image{
 
-    width:64px;
+    width:56px;
 
-    height:64px;
-
-    border-radius:16px;
+    height:56px;
 
     object-fit:cover;
 
-    transition:.15s;
+    border-radius:12px;
 
 }
 
@@ -759,12 +757,10 @@ body{
 
 .gacha-list-stars{
 
-    margin-top:6px;
+    margin-top:4px;
 
-    font-size:12px;
+    font-size:10px;
 
-    color:#f6c343;
-
-    letter-spacing:2px;
+    letter-spacing:1px;
 
 }
