@@ -89,8 +89,8 @@ id="collectionGrid">
 
 }
 
-async function loadCollection(){
-
+export async function loadCollection(){
+    
     const grid =
 
         document.getElementById(
