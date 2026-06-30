@@ -129,6 +129,8 @@ async function loadCollection(){
 
 );
 
+    let currentRarity = 0;
+
     for(
 
         const character
@@ -136,6 +138,43 @@ async function loadCollection(){
         of characters
 
     ){
+        if(
+
+    character.rarity!==currentRarity
+
+){
+
+    currentRarity =
+
+        character.rarity;
+
+    const heading =
+
+        document.createElement(
+
+            "h3"
+
+        );
+
+    heading.className =
+
+        "collection-heading";
+
+    heading.textContent =
+
+        "★".repeat(
+
+            currentRarity
+
+        );
+
+    grid.appendChild(
+
+        heading
+
+    );
+
+}
 
         const card =
 
