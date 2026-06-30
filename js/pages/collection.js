@@ -210,16 +210,7 @@ src="${image}"
 
 class="collection-image">
 
-<div
-class="collection-stars">
 
-${"★".repeat(
-
-    character.rarity
-
-)}
-
-</div>
 
 <div
 class="collection-name">
