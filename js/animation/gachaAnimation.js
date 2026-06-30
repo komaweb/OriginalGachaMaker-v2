@@ -167,53 +167,47 @@ export async function playGachaAnimation(
 
     }
 
-await wait(
-    800
-);
+    await wait(
 
-grid.innerHTML = "";
-grid.classList.remove(
-    "single"
-);
-
-grid.style.display = "flex";
-grid.style.justifyContent = "center";
-grid.style.alignItems = "center";    
-
-if(
-
-    results.length===1
-
-){
-
-    await showResultDetail(
-
-        overlay,
-
-        grid,
-
-        results[0]
+        800
 
     );
 
-}else{
+    if(
 
-    await showResultList(
+        results.length===1
 
-        overlay,
+    ){
 
-        grid,
+        await showResultDetail(
 
-        results
+            overlay,
 
-    );
+            grid,
+
+            results[0]
+
+        );
+
+    }else{
+
+        await showResultList(
+
+            overlay,
+
+            grid,
+
+            results
+
+        );
+
+    }
+
+    return results;
 
 }
 
-return results;
-
-
-    async function showResultDetail(
+async function showResultDetail(
 
     overlay,
 
@@ -225,26 +219,37 @@ return results;
 
     grid.innerHTML = "";
 
-    grid.classList.remove(
-        "single"
-    );
+    grid.className =
 
-    grid.style.display = "flex";
-    grid.style.justifyContent = "center";
-    grid.style.alignItems = "center";
+        "gacha-grid";
+
+    grid.style.display =
+
+        "flex";
+
+    grid.style.justifyContent =
+
+        "center";
+
+    grid.style.alignItems =
+
+        "center";
 
     const card =
+
         document.createElement(
+
             "div"
+
         );
 
     card.className =
+
         "gacha-result";
 
     card.innerHTML = `
 
-<div
-class="gacha-result-body">
+<div class="gacha-result-body">
 
 <img
 class="gacha-result-image"
@@ -258,8 +263,7 @@ ${character.name}
 
 </h2>
 
-<p
-class="gacha-result-stars">
+<p class="gacha-result-stars">
 
 ${"★".repeat(
     character.rarity
@@ -267,15 +271,13 @@ ${"★".repeat(
 
 </p>
 
-<p
-class="gacha-result-quote">
+<p class="gacha-result-quote">
 
 「${character.quote}」
 
 </p>
 
-<p
-class="gacha-result-description">
+<p class="gacha-result-description">
 
 ${character.description}
 
@@ -283,8 +285,7 @@ ${character.description}
 
 </div>
 
-<button
-id="closeResult">
+<button id="closeResult">
 
 閉じる
 
@@ -293,7 +294,9 @@ id="closeResult">
 `;
 
     grid.appendChild(
+
         card
+
     );
 
     await new Promise(
@@ -301,16 +304,20 @@ id="closeResult">
         resolve=>{
 
             document
-            .getElementById(
-                "closeResult"
-            )
-            .onclick=()=>{
 
-                overlay.remove();
+                .getElementById(
 
-                resolve();
+                    "closeResult"
 
-            };
+                )
+
+                .onclick=()=>{
+
+                    overlay.remove();
+
+                    resolve();
+
+                };
 
         }
 
@@ -318,7 +325,7 @@ id="closeResult">
 
 }
 
-}
+
 async function showResultList(
 
     overlay,
@@ -329,11 +336,19 @@ async function showResultList(
 
 ){
 
-    grid.innerHTML="";
+    grid.innerHTML = "";
 
-    grid.className="gacha-list";
+    grid.className =
 
-    const list=
+        "gacha-list";
+
+    grid.style.display = "";
+
+    grid.style.justifyContent = "";
+
+    grid.style.alignItems = "";
+
+    const list =
 
         document.createElement(
 
@@ -341,61 +356,109 @@ async function showResultList(
 
         );
 
-    list.className=
+    list.className =
 
         "gacha-list-grid";
 
-    for(
+    results.forEach(
 
-        const character
+        character=>{
 
-        of results
+            const card =
 
-    ){
+                document.createElement(
 
-        const img=
-
-            document.createElement(
-
-                "img"
-
-            );
-
-        img.className=
-
-            "gacha-list-image";
-
-        img.src=
-
-            blobToURL(
-
-                character.iconImage
-
-            );
-
-        img.onclick=
-
-            async()=>{
-
-                await showResultDetail(
-
-                    overlay,
-
-                    grid,
-
-                    character
+                    "div"
 
                 );
 
-            };
+            card.className =
 
-        list.appendChild(
+                "gacha-list-card";
 
-            img
+            const img =
 
-        );
+                document.createElement(
 
-    }
+                    "img"
+
+                );
+
+            img.className =
+
+                "gacha-list-image";
+
+            img.src =
+
+                blobToURL(
+
+                    character.iconImage
+
+                );
+
+            const stars =
+
+                document.createElement(
+
+                    "div"
+
+                );
+
+            stars.className =
+
+                "gacha-list-stars";
+
+            stars.textContent =
+
+                "★".repeat(
+
+                    character.rarity
+
+                );
+
+            card.append(
+
+                img,
+
+                stars
+
+            );
+
+            card.onclick =
+
+                async()=>{
+
+                    await showResultDetail(
+
+                        overlay,
+
+                        grid,
+
+                        character
+
+                    );
+
+                    await showResultList(
+
+                        overlay,
+
+                        grid,
+
+                        results
+
+                    );
+
+                };
+
+            list.appendChild(
+
+                card
+
+            );
+
+        }
+
+    );
 
     grid.appendChild(
 
@@ -403,7 +466,7 @@ async function showResultList(
 
     );
 
-    const close=
+    const close =
 
         document.createElement(
 
@@ -411,11 +474,15 @@ async function showResultList(
 
         );
 
-    close.textContent=
+    close.className =
+
+        "primary-button";
+
+    close.textContent =
 
         "閉じる";
 
-    close.onclick=()=>{
+    close.onclick = ()=>{
 
         overlay.remove();
 
