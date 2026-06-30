@@ -211,11 +211,11 @@ ${character.name}
 
 </p>
 
-<p>
+<div class="gacha-result-quote">
 
-${character.quote}
+「${character.quote}」
 
-</p>
+</div>
 
 <p>
 
