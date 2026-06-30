@@ -521,9 +521,9 @@ body{
 
     display:grid;
 
-    grid-template-columns:repeat(5,80px);
+    grid-template-columns:repeat(5,56px);
 
-    gap:16px;
+    gap:10px;
 
     justify-content:center;
 
@@ -620,15 +620,16 @@ body{
 
 .gacha-result-stars{
 
-    margin:10px 0 14px;
-
-    font-size:26px;
-
     color:#f6c343;
+
+    font-size:32px;
 
     letter-spacing:4px;
 
+    margin:10px 0 18px;
+
 }
+
 .gacha-result-quote{
 
     width:100%;
