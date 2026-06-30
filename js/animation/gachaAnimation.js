@@ -1,189 +1,80 @@
 //======================================
 // Original Gacha Maker
-// animation/gachaAnimation.js
+// components/layout.js
 //======================================
 
-function wait(ms){
+import {
 
-    return new Promise(
+    createElement
 
-        resolve=>{
+} from "../utils/dom.js";
 
-            setTimeout(
+import {
 
-                resolve,
+    createHeader
 
-                ms
+} from "./header.js";
 
-            );
+import {
 
-        }
+    createTabs
 
-    );
+} from "./tabs.js";
 
-}
+export function createLayout(
 
-async function poyon(element){
-
-    element.classList.remove(
-
-        "poyon"
-
-    );
-
-    void element.offsetWidth;
-
-    element.classList.add(
-
-        "poyon"
-
-    );
-
-    await wait(280);
-
-    element.classList.remove(
-
-        "poyon"
-
-    );
-
-}
-
-export async function playGachaAnimation(
-
-    gacha,
-
-    results
+    firstPage
 
 ){
 
-    const overlay =
+    const root =
 
-        document.getElementById(
+        createElement(
 
-            "gachaOverlay"
+            "div"
 
         );
 
-const boxes =
-    document.querySelectorAll(
-        "#gachaOverlay .present-box"
-    );
+    root.id =
 
+        "layout";
 
+    root.appendChild(
 
-    overlay.classList.remove(
-
-        "hidden"
+        createHeader()
 
     );
 
-    boxes.forEach(
+    root.appendChild(
 
-        box=>{
-
-            box.style.display="none";
-
-            box.classList.remove(
-
-                "open"
-
-            );
-
-        }
+        createTabs()
 
     );
 
-    for(
+    const main =
 
-        let i=0;
+        createElement(
 
-        i<results.length;
-
-        i++
-
-    ){
-
-        const box =
-
-            boxes[i];
-
-        const character =
-
-            results[i];
-
-        box.style.display =
-
-            "flex";
-
-  const img = document.createElement("img");
-
-img.className = "present-image";
-
-img.src = URL.createObjectURL(
-    character.iconImage
-);
-
-box.replaceChildren(img);
-
-        await wait(
-
-            180
+            "main"
 
         );
 
-        await poyon(
+    main.id =
 
-            box
+        "pages";
 
-        );
+    main.appendChild(
 
-        box.classList.add(
-
-            "open"
-
-        );
-
-        box.innerHTML = `
-
-<img
-class="present-image"
-src="${
-    URL.createObjectURL(
-        character.iconImage
-    )
-}">
-
-`;
-
-    }
-
-    await wait(
-
-        800
+        firstPage
 
     );
 
-    return results;
+    root.appendChild(
 
-}
+        main
 
-export function closeAnimation(){
+    );
 
-    document
-
-        .getElementById(
-
-            "gachaOverlay"
-
-        )
-
-        .classList
-
-        .add(
-
-            "hidden"
-
-        );
+    return root;
 
 }
