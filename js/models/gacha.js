@@ -9,7 +9,7 @@ return {
     id: crypto.randomUUID(),
     name: "",
     banner: null,
-    animationImage: null,
+    boxImage: null,
     createdAt: Date.now()
 };
 
