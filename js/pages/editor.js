@@ -4,6 +4,11 @@
 //======================================
 import {
 
+    fileToBlob
+
+} from "../utils/image.js";
+import {
+
     createCharacter
 
 } from "../models/character.js";
@@ -665,7 +670,7 @@ if(iconFile){
 
     character.iconImage =
 
-        await fileToDataURL(
+        await fileToBlob(
 
             iconFile
 
@@ -677,7 +682,7 @@ if(standFile){
 
     character.standImage =
 
-        await fileToDataURL(
+        await fileToBlob(
 
             standFile
 

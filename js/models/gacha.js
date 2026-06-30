@@ -5,16 +5,12 @@
 
 export function createGacha(){
 
-    return{
-
-        id:crypto.randomUUID(),
-
-        name:"",
-
-        banner:null,
-
-        createdAt:Date.now()
-
-    };
+return {
+    id: crypto.randomUUID(),
+    name: "",
+    banner: null,
+    animationImage: null,
+    createdAt: Date.now()
+};
 
 }
