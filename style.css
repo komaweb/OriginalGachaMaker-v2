@@ -493,3 +493,110 @@ body{
     }
 
 }
+
+
+/*======================================
+    Gacha Animation
+======================================*/
+
+.gacha-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.85);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:99999;
+
+}
+
+.gacha-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(5,80px);
+
+    gap:16px;
+
+    justify-content:center;
+
+}
+
+.gacha-grid.single{
+
+    grid-template-columns:80px;
+
+}
+
+.gacha-box{
+
+    width:80px;
+
+    height:80px;
+
+    background:#1a1a1a;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.gacha-image{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.poyon{
+
+    animation:poyon .28s;
+
+}
+
+@keyframes poyon{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    40%{
+
+        transform:scale(.9);
+
+    }
+
+    70%{
+
+        transform:scale(1.08);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
