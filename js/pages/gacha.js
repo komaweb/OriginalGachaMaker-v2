@@ -167,19 +167,21 @@ export async function loadGacha(){
 
     }
 
-    root.innerHTML = `
+root.innerHTML = `
 
-<div class="gacha-banner">
+<div class="gacha-header">
 
-    ${
-        gacha.banner
-        ?
-        `<img
-        src="${blobToURL(
+    <div class="gacha-banner">
+
+        ${
             gacha.banner
-        )}">`
-        :
-        `
+            ?
+            `<img
+            src="${blobToURL(
+                gacha.banner
+            )}">`
+            :
+            `
 <div
 class="home-gacha-placeholder">
 
@@ -187,12 +189,15 @@ No Image
 
 </div>
 `
-    }
+        }
 
-</div>
-    <div class="home-series-header">
+    </div>
 
-        <div class="home-series-title">
+    <div
+    class="home-series-header">
+
+        <div
+        class="home-series-title">
 
             ${
                 gacha.boxImage
@@ -231,7 +236,6 @@ No Image
 </div>
 
 `;
-
     document.getElementById(
 
     "singleGachaButton"
