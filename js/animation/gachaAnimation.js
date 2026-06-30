@@ -116,17 +116,15 @@ const boxes =
 
             "flex";
 
-        box.innerHTML = `
+  const img = document.createElement("img");
 
-<img
-class="present-image"
-src="${
-    gacha.boxImage ??
-    gacha.banner ??
-    ""
-}">
+img.className = "present-image";
 
-`;
+img.src = URL.createObjectURL(
+    character.iconImage
+);
+
+box.replaceChildren(img);
 
         await wait(
 
