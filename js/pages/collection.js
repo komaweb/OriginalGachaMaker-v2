@@ -103,6 +103,31 @@ async function loadCollection(){
     const characters =
 
         await getCharacters();
+    characters.sort(
+
+    (a,b)=>{
+
+        if(
+
+            b.rarity!==a.rarity
+
+        ){
+
+            return b.rarity-a.rarity;
+
+        }
+
+        return a.name.localeCompare(
+
+            b.name,
+
+            "ja"
+
+        );
+
+    }
+
+);
 
     for(
 
