@@ -606,25 +606,20 @@ body{
 
     width:min(92vw,420px);
 
+    max-height:85vh;
+
     background:white;
 
     border-radius:24px;
-
-    padding:24px;
-
-    margin:auto;
 
     display:flex;
 
     flex-direction:column;
 
-    align-items:center;
-
-    justify-content:center;
-
-    text-align:center;
+    overflow:hidden;
 
 }
+
 .gacha-result-stars{
 
     margin:10px 0 14px;
