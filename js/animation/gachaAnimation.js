@@ -1,80 +1,178 @@
 //======================================
 // Original Gacha Maker
-// components/layout.js
+// animation/gachaAnimation.js
 //======================================
 
 import {
 
-    createElement
+    blobToURL
 
-} from "../utils/dom.js";
+} from "../utils/image.js";
 
-import {
+function wait(ms){
 
-    createHeader
+    return new Promise(
 
-} from "./header.js";
+        resolve=>setTimeout(
 
-import {
+            resolve,
 
-    createTabs
+            ms
 
-} from "./tabs.js";
+        )
 
-export function createLayout(
+    );
 
-    firstPage
+}
+
+export async function playGachaAnimation(
+
+    gacha,
+
+    results
 
 ){
 
-    const root =
+    const overlay =
 
-        createElement(
+        document.createElement(
 
             "div"
 
         );
 
-    root.id =
+    overlay.className =
 
-        "layout";
+        "gacha-overlay";
 
-    root.appendChild(
+    const grid =
 
-        createHeader()
+        document.createElement(
 
-    );
-
-    root.appendChild(
-
-        createTabs()
-
-    );
-
-    const main =
-
-        createElement(
-
-            "main"
+            "div"
 
         );
 
-    main.id =
+    grid.className =
 
-        "pages";
+        results.length===1
 
-    main.appendChild(
+        ?
 
-        firstPage
+        "gacha-grid single"
+
+        :
+
+        "gacha-grid";
+
+    overlay.appendChild(
+
+        grid
 
     );
 
-    root.appendChild(
+    document.body.appendChild(
 
-        main
+        overlay
 
     );
 
-    return root;
+    for(
+
+        const character
+
+        of results
+
+    ){
+
+        const box =
+
+            document.createElement(
+
+                "div"
+
+            );
+
+        box.className =
+
+            "gacha-box";
+
+        const image =
+
+            document.createElement(
+
+                "img"
+
+            );
+
+        image.className =
+
+            "gacha-image";
+
+        image.src =
+
+            gacha.boxImage
+
+            ||
+
+            gacha.banner
+
+            ||
+
+            "";
+
+        box.appendChild(
+
+            image
+
+        );
+
+        grid.appendChild(
+
+            box
+
+        );
+
+        await wait(
+
+            180
+
+        );
+
+        box.classList.add(
+
+            "poyon"
+
+        );
+
+        await wait(
+
+            280
+
+        );
+
+        box.classList.remove(
+
+            "poyon"
+
+        );
+
+        image.src =
+
+            blobToURL(
+
+                character.iconImage
+
+            );
+
+    }
+
+    await wait(
+
+        800
+
+    );
+
+    overlay.remove();
 
 }
