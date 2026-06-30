@@ -193,37 +193,44 @@ card.className =
 
 card.innerHTML = `
 
-<img
-class="gacha-result-image"
-src="${blobToURL(
-    character.standImage
-)}">
+<div
+class="gacha-result-body">
 
-<h2>
+    <img
+    class="gacha-result-image"
+    src="${blobToURL(
+        character.standImage
+    )}">
 
-${character.name}
+    <h2>
 
-</h2>
+    ${character.name}
 
-<p
-class="gacha-result-stars">
+    </h2>
 
-${"★".repeat(character.rarity)}
+    <p
+    class="gacha-result-stars">
 
-</p>
+    ${"★".repeat(character.rarity)}
 
-<div class="gacha-result-quote">
+    </p>
 
-「${character.quote}」
+    <p
+    class="gacha-result-quote">
+
+    「${character.quote}」
+
+    </p>
+
+    <p
+    class="gacha-result-description">
+
+    ${character.description}
+
+    </p>
 
 </div>
 
-<p
-class="gacha-result-description">
-
-${character.description}
-
-</p>
 <button
 id="closeResult">
 
