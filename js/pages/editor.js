@@ -764,6 +764,13 @@ document.getElementById(
     "characterDescription"
 
 ).value="";
+    document.getElementById(
+    "characterIcon"
+).value="";
+
+document.getElementById(
+    "characterStand"
+).value="";
 
 await loadCharacterList();
 
@@ -924,9 +931,11 @@ buttonArea.className =
 
                 );
 
-                await loadCharacterList();
+await loadCharacterList();
 
-                await loadHome();
+await loadSeries();
+
+await loadHome();
 
             };
 
