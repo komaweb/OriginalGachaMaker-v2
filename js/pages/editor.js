@@ -728,6 +728,26 @@ character.description =
         character
 
     );
+    document.getElementById(
+    "characterName"
+).value="";
+
+document.getElementById(
+    "characterQuote"
+).value="";
+
+document.getElementById(
+    "characterDescription"
+).value="";
+
+document.getElementById(
+    "characterIcon"
+).value="";
+
+document.getElementById(
+    "characterStand"
+).value="";
+
 
 name.value="";
 
@@ -745,9 +765,11 @@ document.getElementById(
 
 ).value="";
 
-    await loadCharacterList();
+await loadCharacterList();
 
-    await loadHome();
+await loadSeries();
+
+await loadHome();
 
 }
 async function loadCharacterList(){
@@ -820,8 +842,6 @@ style="display:flex;align-items:center;gap:12px;">
 <img
 
 src="${iconUrl}"
-
-}"
 
 style="
 
