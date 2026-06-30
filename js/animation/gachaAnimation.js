@@ -65,13 +65,10 @@ export async function playGachaAnimation(
 
         );
 
-    const boxes =
-
-        document.querySelectorAll(
-
-            ".present-box"
-
-        );
+const boxes =
+    document.querySelectorAll(
+        "#gachaOverlay .present-box"
+    );
 
 
 
