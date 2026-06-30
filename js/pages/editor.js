@@ -88,6 +88,19 @@ placeholder="シリーズ名">
 
 <br><br>
 
+<label>
+
+バナー画像
+
+</label>
+
+<input
+id="seriesBanner"
+type="file"
+accept="image/*">
+
+<br><br>
+
 <button
 id="saveSeries"
 class="primary-button">
@@ -331,11 +344,35 @@ async function saveSeries(){
 
     const gacha =
 
-        createGacha();
+    createGacha();
 
-    gacha.name =
+gacha.name =
 
-        name;
+    name;
+
+const banner =
+
+    document.getElementById(
+
+        "seriesBanner"
+
+    ).files[0];
+
+if(
+
+    banner
+
+){
+
+    gacha.banner =
+
+        await fileToBlob(
+
+            banner
+
+        );
+
+}
 
     await addGacha(
 
@@ -344,6 +381,13 @@ async function saveSeries(){
     );
 
     input.value="";
+
+document.getElementById(
+
+    "seriesBanner"
+
+).value="";
+    
 
 await loadSeries();
 
