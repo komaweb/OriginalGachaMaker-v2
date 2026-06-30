@@ -437,6 +437,8 @@ body{
 
     object-fit:contain;
 
+    display:block;
+
 }
 
 .present-box img{
