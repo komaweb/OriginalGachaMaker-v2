@@ -260,16 +260,73 @@ ${
 
     document.getElementById(
 
-        "tenGachaButton"
+    "tenGachaButton"
 
-    ).onclick = ()=>{
+).onclick = async()=>{
 
-        alert(
+    const pool =
 
-            "10連（次回実装）"
+        characters.filter(
+
+            character=>
+
+                character.gachaId===gacha.id
 
         );
 
-    };
+    if(
 
+        pool.length===0
+
+    ){
+
+        alert(
+
+            "キャラクターが登録されていません"
+
+        );
+
+        return;
+
+    }
+
+    const results = [];
+
+    for(
+
+        let i=0;
+
+        i<10;
+
+        i++
+
+    ){
+
+        const random =
+
+            pool[
+                Math.floor(
+                    Math.random() *
+                    pool.length
+                )
+            ];
+
+        results.push(
+
+            random
+
+        );
+
+    }
+
+    await playGachaAnimation(
+
+        gacha,
+
+        results
+
+    );
+
+};
+    
 }
