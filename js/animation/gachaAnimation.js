@@ -73,35 +73,7 @@ export async function playGachaAnimation(
 
         );
 
-    const grid =
 
-    document.getElementById(
-
-        "presentGrid"
-
-    );
-
-if(
-
-    results.length===1
-
-){
-
-    grid.classList.add(
-
-        "single"
-
-    );
-
-}else{
-
-    grid.classList.remove(
-
-        "single"
-
-    );
-
-}
 
     overlay.classList.remove(
 
