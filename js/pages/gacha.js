@@ -4,6 +4,12 @@
 //======================================
 import {
 
+    blobToURL
+
+} from "../utils/image.js";
+
+import {
+
     getCharacters
 
 } from "../database/characterRepository.js";
@@ -172,7 +178,11 @@ export async function loadGacha(){
 
             ?
 
-            `<img src="${gacha.banner}">`
+            `<img src="${blobToURL(
+
+    gacha.banner
+
+)}">`
 
             :
 
