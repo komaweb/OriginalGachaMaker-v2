@@ -666,9 +666,11 @@ body{
 
 .gacha-result-image{
 
-    width:180px;
+    max-width:220px;
 
-    max-width:100%;
+    max-height:260px;
+
+    width:auto;
 
     height:auto;
 
@@ -676,7 +678,7 @@ body{
 
     display:block;
 
-    margin:0 auto 16px;
+    margin:0 auto 18px;
 
 }
 
