@@ -167,12 +167,85 @@ export async function playGachaAnimation(
 
     }
 
-    await wait(
+await wait(
+    800
+);
 
-        800
+grid.innerHTML = "";
 
+const character =
+    results[0];
+
+const card =
+    document.createElement(
+        "div"
     );
 
-    overlay.remove();
+card.className =
+    "gacha-result";
 
-}
+card.innerHTML = `
+
+<img
+class="gacha-result-image"
+src="${blobToURL(
+    character.standImage
+)}">
+
+<h2>
+
+${character.name}
+
+</h2>
+
+<p>
+
+☆${character.rarity}
+
+</p>
+
+<p>
+
+${character.quote}
+
+</p>
+
+<p>
+
+${character.description}
+
+</p>
+
+<button
+id="closeResult">
+
+閉じる
+
+</button>
+
+`;
+
+grid.appendChild(
+    card
+);
+
+await new Promise(
+    resolve=>{
+
+        document
+        .getElementById(
+            "closeResult"
+        )
+        .onclick=()=>{
+
+            overlay.remove();
+
+            resolve();
+
+        };
+
+    }
+
+);
+
+return results;
