@@ -705,3 +705,50 @@ body{
     text-align:center;
 
 }
+
+
+.gacha-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:24px;
+
+}
+
+.gacha-list-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(5,72px);
+
+    gap:14px;
+
+    justify-content:center;
+
+}
+
+.gacha-list-image{
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:16px;
+
+    object-fit:cover;
+
+    cursor:pointer;
+
+    transition:.15s;
+
+}
+
+.gacha-list-image:hover{
+
+    transform:scale(1.08);
+
+}
