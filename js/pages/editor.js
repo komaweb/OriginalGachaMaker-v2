@@ -778,6 +778,22 @@ async function loadCharacterList(){
 
     characters.forEach(character=>{
 
+        const iconUrl =
+
+    character.iconImage
+
+    ?
+
+    URL.createObjectURL(
+
+        character.iconImage
+
+    )
+
+    :
+
+    "https://placehold.co/64x64?text=?";
+
         const gacha =
 
             gachas.find(
@@ -803,10 +819,8 @@ style="display:flex;align-items:center;gap:12px;">
 
 <img
 
-src="${
-    character.iconImage ??
+src="${iconUrl}"
 
-    "https://placehold.co/64x64?text=?"
 }"
 
 style="
