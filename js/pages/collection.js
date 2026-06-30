@@ -177,9 +177,49 @@ for(
 
         "collection-series";
 
-    summary.textContent =
+const boxImage =
 
-        gacha.name;
+    gacha.boxImage
+
+    ?
+
+    blobToURL(
+
+        gacha.boxImage
+
+    )
+
+    :
+
+    "";
+
+summary.innerHTML = `
+
+<div class="collection-series-left">
+
+    ${
+        boxImage
+
+        ?
+
+        `<img
+        class="collection-series-icon"
+        src="${boxImage}">`
+
+        :
+
+        ""
+    }
+
+    <span>
+
+        ${gacha.name}
+
+    </span>
+
+</div>
+
+`;
 
     details.appendChild(
 
